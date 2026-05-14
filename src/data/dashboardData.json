@@ -1,0 +1,97 @@
+{
+  "user": {
+    "id": "U1001",
+    "name": "Abhishek Sharma",
+    "email": "abhi32348@gmail.com",
+    "phone": "+91 6204859723",
+    "address": "Punjab, India",
+    "avatar": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=256&q=80",
+    "memberSince": "Jan 2023"
+  },
+  "stats": {
+    "totalBookings": 12,
+    "favoriteHotels": 5,
+    "upcomingTrips": 2,
+    "savedPackages": 3
+  },
+  "activities": [
+    {
+      "id": "A1",
+      "type": "booking",
+      "title": "Booked 'Mystical Bali Adventure'",
+      "date": "Oct 12, 2023",
+      "time": "14:30",
+      "icon": "✈️"
+    },
+    {
+      "id": "A2",
+      "type": "favorite",
+      "title": "Saved 'Grand Azure Resort & Spa' to favorites",
+      "date": "Oct 10, 2023",
+      "time": "09:15",
+      "icon": "❤️"
+    },
+    {
+      "id": "A3",
+      "type": "search",
+      "title": "Searched for flights to Paris",
+      "date": "Oct 08, 2023",
+      "time": "20:45",
+      "icon": "🔍"
+    },
+    {
+      "id": "A4",
+      "type": "profile",
+      "title": "Updated profile picture",
+      "date": "Sep 25, 2023",
+      "time": "11:20",
+      "icon": "👤"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "B1001",
+      "type": "Package",
+      "title": "Mystical Bali Adventure",
+      "destination": "Bali, Indonesia",
+      "startDate": "2023-11-15",
+      "endDate": "2023-11-21",
+      "price": 1299,
+      "status": "Upcoming",
+      "imageUrl": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "id": "B1002",
+      "type": "Hotel",
+      "title": "Grand Azure Resort & Spa",
+      "destination": "Maldives",
+      "startDate": "2023-12-10",
+      "endDate": "2023-12-15",
+      "price": 2250,
+      "status": "Upcoming",
+      "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "id": "B998",
+      "type": "Package",
+      "title": "Classic Golden Triangle",
+      "destination": "India",
+      "startDate": "2023-05-10",
+      "endDate": "2023-05-15",
+      "price": 650,
+      "status": "Completed",
+      "imageUrl": "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    },
+    {
+      "id": "B995",
+      "type": "Hotel",
+      "title": "Urban Oasis Hotel",
+      "destination": "Tokyo, Japan",
+      "startDate": "2023-02-14",
+      "endDate": "2023-02-20",
+      "price": 1100,
+      "status": "Cancelled",
+      "imageUrl": "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+    }
+  ]
+}

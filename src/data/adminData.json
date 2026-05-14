@@ -1,0 +1,73 @@
+{
+  "stats": {
+    "totalUsers": 12450,
+    "totalHotels": 342,
+    "totalPackages": 156,
+    "totalBookings": 8930,
+    "revenue": 1450000,
+    "activeUsers": 2400
+  },
+  "recentBookings": [
+    { "id": "BKG-101", "user": "Alice Smith", "item": "Grand Azure Resort & Spa", "type": "Hotel", "date": "2023-10-24", "amount": 897, "status": "Confirmed", "paymentStatus": "Paid" },
+    { "id": "BKG-102", "user": "Bob Johnson", "item": "Bali Explorer Package", "type": "Package", "date": "2023-10-23", "amount": 1250, "status": "Pending", "paymentStatus": "Unpaid" },
+    { "id": "BKG-103", "user": "Carol Williams", "item": "Urban Boutique Hotel", "type": "Hotel", "date": "2023-10-23", "amount": 280, "status": "Confirmed", "paymentStatus": "Paid" },
+    { "id": "BKG-104", "user": "David Brown", "item": "Swiss Alps Ski Trip", "type": "Package", "date": "2023-10-22", "amount": 3400, "status": "Cancelled", "paymentStatus": "Refunded" },
+    { "id": "BKG-105", "user": "Eve Davis", "item": "Desert Oasis Camp", "type": "Hotel", "date": "2023-10-21", "amount": 180, "status": "Confirmed", "paymentStatus": "Paid" }
+  ],
+  "users": [
+    { "id": "USR-001", "name": "John Doe", "email": "john@example.com", "role": "Admin", "status": "Active", "joined": "2022-01-15" },
+    { "id": "USR-002", "name": "Alice Smith", "email": "alice@example.com", "role": "User", "status": "Active", "joined": "2023-03-22" },
+    { "id": "USR-003", "name": "Bob Johnson", "email": "bob@example.com", "role": "User", "status": "Blocked", "joined": "2023-05-10" },
+    { "id": "USR-004", "name": "Carol Williams", "email": "carol@example.com", "role": "User", "status": "Active", "joined": "2023-07-05" },
+    { "id": "USR-005", "name": "David Brown", "email": "david@example.com", "role": "User", "status": "Active", "joined": "2023-09-18" },
+    { "id": "USR-006", "name": "Eve Davis", "email": "eve@example.com", "role": "User", "status": "Active", "joined": "2023-10-01" },
+    { "id": "USR-007", "name": "Frank Miller", "email": "frank@example.com", "role": "Agent", "status": "Active", "joined": "2022-11-12" }
+  ],
+  "hotels": [
+    { "id": "HTL-001", "name": "Grand Azure Resort & Spa", "location": "Maldives", "rating": 4.9, "price": 450, "status": "Approved" },
+    { "id": "HTL-002", "name": "The Himalayan Retreat", "location": "India", "rating": 4.5, "price": 120, "status": "Approved" },
+    { "id": "HTL-003", "name": "Urban Boutique Hotel", "location": "France", "rating": 4.7, "price": 280, "status": "Pending" },
+    { "id": "HTL-004", "name": "Sunset Beach Villa", "location": "Indonesia", "rating": 4.8, "price": 320, "status": "Approved" },
+    { "id": "HTL-005", "name": "Backpacker's Haven", "location": "Thailand", "rating": 4.1, "price": 45, "status": "Rejected" }
+  ],
+  "packages": [
+    { "id": "PKG-001", "title": "Bali Explorer", "duration": "7 Days", "price": 1250, "status": "Active" },
+    { "id": "PKG-002", "title": "Swiss Alps Ski Trip", "duration": "5 Days", "price": 3400, "status": "Active" },
+    { "id": "PKG-003", "title": "Golden Triangle Tour", "duration": "6 Days", "price": 850, "status": "Draft" },
+    { "id": "PKG-004", "title": "Maldives Honeymoon", "duration": "4 Days", "price": 2100, "status": "Active" },
+    { "id": "PKG-005", "title": "Euro Trip Highlights", "duration": "14 Days", "price": 4500, "status": "Draft" }
+  ],
+  "analytics": {
+    "revenueData": [
+      { "month": "Jan", "revenue": 65000 },
+      { "month": "Feb", "revenue": 59000 },
+      { "month": "Mar", "revenue": 80000 },
+      { "month": "Apr", "revenue": 81000 },
+      { "month": "May", "revenue": 56000 },
+      { "month": "Jun", "revenue": 55000 },
+      { "month": "Jul", "revenue": 40000 },
+      { "month": "Aug", "revenue": 95000 },
+      { "month": "Sep", "revenue": 110000 },
+      { "month": "Oct", "revenue": 140000 }
+    ],
+    "userGrowth": [
+      { "month": "Jan", "users": 4000 },
+      { "month": "Feb", "users": 3000 },
+      { "month": "Mar", "users": 2000 },
+      { "month": "Apr", "users": 2780 },
+      { "month": "May", "users": 1890 },
+      { "month": "Jun", "users": 2390 },
+      { "month": "Jul", "users": 3490 },
+      { "month": "Aug", "users": 4500 },
+      { "month": "Sep", "users": 5100 },
+      { "month": "Oct", "users": 6000 }
+    ],
+    "destinations": [
+      { "name": "Maldives", "value": 400 },
+      { "name": "Bali", "value": 300 },
+      { "name": "Paris", "value": 300 },
+      { "name": "Dubai", "value": 200 },
+      { "name": "Rome", "value": 150 }
+    ]
+  }
+}

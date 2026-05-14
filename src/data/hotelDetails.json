@@ -1,0 +1,53 @@
+{
+  "1": {
+    "id": 1,
+    "name": "Grand Azure Resort & Spa",
+    "city": "Malé",
+    "location": "Maldives",
+    "price": 450,
+    "rating": 4.9,
+    "reviewsCount": 1284,
+    "type": "Luxury Resort",
+    "description": "Experience unparalleled luxury at the Grand Azure Resort & Spa, located in the pristine waters of the Maldives. Our overwater villas offer direct ocean access, private infinity pools, and breathtaking sunset views. Indulge in world-class dining at our underwater restaurant or rejuvenate your senses at our award-winning holistic spa. Whether you're seeking a romantic getaway or a serene retreat, Grand Azure promises an unforgettable escape.",
+    "amenities": ["Free WiFi", "Pool", "Spa", "Beachfront", "Restaurant", "Gym", "AC Rooms", "Airport Pickup", "Room Service", "Bar"],
+    "images": [
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1540541338287-41700207dee6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    "reviews": [
+      {
+        "id": 101,
+        "userName": "Sarah Jenkins",
+        "userImage": "https://i.pravatar.cc/150?img=1",
+        "rating": 5,
+        "date": "October 12, 2023",
+        "text": "Absolutely incredible experience! The overwater villa was a dream come true. The staff was incredibly attentive, and the food was out of this world. We will definitely be back for our anniversary!"
+      },
+      {
+        "id": 102,
+        "userName": "Michael Chen",
+        "userImage": "https://i.pravatar.cc/150?img=11",
+        "rating": 4,
+        "date": "September 28, 2023",
+        "text": "Beautiful property and excellent service. The spa treatments were top-notch. The only minor issue was the WiFi being a bit spotty in our villa, but everything else was perfect."
+      },
+      {
+        "id": 103,
+        "userName": "Emma Watson",
+        "userImage": "https://i.pravatar.cc/150?img=5",
+        "rating": 5,
+        "date": "August 15, 2023",
+        "text": "A slice of paradise! The snorkeling right off our deck was amazing. The underwater restaurant is a must-try experience. Highly recommend this resort."
+      }
+    ],
+    "nearbyAttractions": [
+      { "name": "Bikini Beach", "distance": "0.5 km", "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+      { "name": "Malé City Center", "distance": "5.2 km", "image": "https://images.unsplash.com/photo-1518386445585-645856b3e94a?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" },
+      { "name": "Coral Reef Reserve", "distance": "1.2 km", "image": "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" }
+    ],
+    "isFavorite": false
+  }
+}

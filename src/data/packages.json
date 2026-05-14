@@ -1,0 +1,160 @@
+[
+  {
+    "id": 1,
+    "title": "Mystical Bali Adventure",
+    "destination": "Bali, Indonesia",
+    "duration": "7 Days / 6 Nights",
+    "days": 7,
+    "price": 1299,
+    "rating": 4.8,
+    "reviewsCount": 342,
+    "category": "Honeymoon",
+    "popularity": 95,
+    "shortDescription": "Experience the magic of Bali with its ancient temples, lush rice terraces, and pristine beaches. Perfect for couples and honeymooners.",
+    "description": "Embark on a mystical journey through the Island of the Gods. This comprehensive package combines the spiritual heart of Ubud with the breathtaking coastlines of Seminyak. Witness traditional fire dances, explore sacred monkey forests, swing over endless rice terraces, and relax in luxurious private pool villas. Our expert local guides will ensure you experience both the popular attractions and hidden gems of Balinese culture.",
+    "includes": ["Luxury Accommodation", "Daily Breakfast", "Airport Transfers", "Guided Tours", "Balinese Massage"],
+    "excludes": ["International Flights", "Travel Insurance", "Personal Expenses"],
+    "imageUrl": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1555400038-63f5ba517a47?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Bali & Welcome Dinner",
+        "description": "Meet and greet at Ngurah Rai International Airport. Private transfer to your luxury villa in Seminyak. Evening welcome dinner featuring traditional Balinese cuisine on the beach."
+      },
+      {
+        "day": 2,
+        "title": "Ubud Cultural Tour & Monkey Forest",
+        "description": "Full day tour of Ubud. Visit the Sacred Monkey Forest Sanctuary, explore the traditional art markets, and witness the stunning Tegalalang Rice Terraces."
+      },
+      {
+        "day": 3,
+        "title": "Temple Tour & Sunset at Tanah Lot",
+        "description": "Morning visit to the iconic Ulun Danu Beratan Temple. Afternoon trip to Tanah Lot Temple to watch a spectacular sunset over the Indian Ocean."
+      }
+    ],
+    "isFavorite": false
+  },
+  {
+    "id": 2,
+    "title": "Alpine Ski Explorer",
+    "destination": "Swiss Alps, Switzerland",
+    "duration": "5 Days / 4 Nights",
+    "days": 5,
+    "price": 2450,
+    "rating": 4.9,
+    "reviewsCount": 156,
+    "category": "Adventure",
+    "popularity": 88,
+    "shortDescription": "Conquer the pristine slopes of the Swiss Alps. A thrilling adventure for skiing enthusiasts of all levels.",
+    "description": "Experience the ultimate winter wonderland in the majestic Swiss Alps. This premium ski package offers access to world-class slopes, luxury chalet accommodation, and breathtaking panoramic views of the Matterhorn. Whether you're a beginner or an expert, our package includes ski passes, premium gear rental, and access to exclusive après-ski lounges.",
+    "includes": ["Ski Pass", "Equipment Rental", "Chalet Stay", "Breakfast & Dinner", "Ski Instructor"],
+    "excludes": ["Flights", "Visa Fees", "Lunch"],
+    "imageUrl": "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival in Zermatt",
+        "description": "Scenic train ride to the car-free village of Zermatt. Check-in to your luxury chalet. Evening gear fitting and orientation."
+      },
+      {
+        "day": 2,
+        "title": "First Day on the Slopes",
+        "description": "Morning ski lesson with a professional instructor. Afternoon free skiing with stunning views of the Matterhorn."
+      }
+    ],
+    "isFavorite": true
+  },
+  {
+    "id": 3,
+    "title": "Dubai Luxury Escape",
+    "destination": "Dubai, UAE",
+    "duration": "4 Days / 3 Nights",
+    "days": 4,
+    "price": 1850,
+    "rating": 4.7,
+    "reviewsCount": 512,
+    "category": "Luxury",
+    "popularity": 92,
+    "shortDescription": "Immerse yourself in the opulence of Dubai. Features desert safaris, fine dining, and ultra-luxury stays.",
+    "description": "Discover the city where the future meets tradition. Stay in a 5-star hotel, shop at the world's largest mall, and dine in the sky. This package includes a premium VIP desert safari, tickets to the top of the Burj Khalifa, and a luxury yacht cruise around the Palm Jumeirah.",
+    "includes": ["5-Star Hotel", "VIP Desert Safari", "Burj Khalifa Tickets", "Yacht Cruise"],
+    "excludes": ["Flights", "Meals not listed"],
+    "imageUrl": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival & Marina Cruise",
+        "description": "Airport pickup in a luxury vehicle. Evening dinner cruise on a luxury yacht through the Dubai Marina."
+      }
+    ],
+    "isFavorite": false
+  },
+  {
+    "id": 4,
+    "title": "Backpacking Southeast Asia",
+    "destination": "Vietnam & Thailand",
+    "duration": "14 Days / 13 Nights",
+    "days": 14,
+    "price": 899,
+    "rating": 4.6,
+    "reviewsCount": 215,
+    "category": "Solo",
+    "popularity": 85,
+    "shortDescription": "The ultimate solo adventure across Southeast Asia. Experience diverse cultures on a budget.",
+    "description": "Designed for the independent traveler, this extensive package takes you through the vibrant streets of Bangkok to the serene waters of Ha Long Bay. Meet like-minded travelers, enjoy authentic street food, and explore ancient ruins. Includes hostel/budget hotel accommodations, inter-city transport, and guided group activities.",
+    "includes": ["Hostel Accommodations", "Train/Bus Tickets", "Street Food Tour", "Ha Long Bay Cruise"],
+    "excludes": ["Flights", "Visas", "Daily Meals"],
+    "imageUrl": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Welcome to Bangkok",
+        "description": "Arrive in Bangkok and check into your social hostel. Evening street food tour in Chinatown."
+      }
+    ],
+    "isFavorite": false
+  },
+  {
+    "id": 5,
+    "title": "Classic Golden Triangle",
+    "destination": "Delhi, Agra, Jaipur (India)",
+    "duration": "6 Days / 5 Nights",
+    "days": 6,
+    "price": 650,
+    "rating": 4.5,
+    "reviewsCount": 420,
+    "category": "Family",
+    "popularity": 90,
+    "shortDescription": "Explore India's rich history, magnificent forts, and the iconic Taj Mahal with your family.",
+    "description": "A perfect family introduction to India. Travel comfortably between Delhi, Agra, and Jaipur in a private AC vehicle. Marvel at the Taj Mahal at sunrise, explore the majestic Amber Fort on an elephant, and wander through the bustling bazaars of Old Delhi.",
+    "includes": ["4-Star Hotels", "Private AC Transport", "Monument Entry Fees", "Breakfast"],
+    "excludes": ["Flights", "Camera Fees", "Lunches & Dinners"],
+    "imageUrl": "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "gallery": [
+      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+    ],
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Delhi Sightseeing",
+        "description": "Explore the Red Fort, Jama Masjid, and take a rickshaw ride through Chandni Chowk."
+      }
+    ],
+    "isFavorite": false
+  }
+]

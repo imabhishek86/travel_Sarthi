@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Grand Azure Resort & Spa",
+    "city": "Malé",
+    "location": "Maldives",
+    "price": 450,
+    "rating": 4.9,
+    "type": "Luxury",
+    "amenities": ["Pool", "Spa", "Beachfront", "Free WiFi"],
+    "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 2,
+    "name": "The Himalayan Retreat",
+    "city": "Manali",
+    "location": "India",
+    "price": 120,
+    "rating": 4.5,
+    "type": "Resort",
+    "amenities": ["Mountain View", "Restaurant", "Free Parking", "WiFi"],
+    "imageUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": true
+  },
+  {
+    "id": 3,
+    "name": "Urban Boutique Hotel",
+    "city": "Paris",
+    "location": "France",
+    "price": 280,
+    "rating": 4.7,
+    "type": "Luxury",
+    "amenities": ["City View", "Bar", "Gym", "Room Service"],
+    "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c0d5e9af?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 4,
+    "name": "Sunset Beach Villa",
+    "city": "Bali",
+    "location": "Indonesia",
+    "price": 320,
+    "rating": 4.8,
+    "type": "Villa",
+    "amenities": ["Private Pool", "Kitchen", "Beach Access", "WiFi"],
+    "imageUrl": "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 5,
+    "name": "Backpacker's Haven",
+    "city": "Bangkok",
+    "location": "Thailand",
+    "price": 45,
+    "rating": 4.1,
+    "type": "Budget",
+    "amenities": ["Free Breakfast", "Locker", "Shared Kitchen", "WiFi"],
+    "imageUrl": "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 6,
+    "name": "Alpine Ski Lodge",
+    "city": "Zermatt",
+    "location": "Switzerland",
+    "price": 550,
+    "rating": 4.9,
+    "type": "Resort",
+    "amenities": ["Ski Access", "Fireplace", "Restaurant", "Sauna"],
+    "imageUrl": "https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 7,
+    "name": "Desert Oasis Camp",
+    "city": "Dubai",
+    "location": "UAE",
+    "price": 180,
+    "rating": 4.6,
+    "type": "Resort",
+    "amenities": ["Desert Safari", "BBQ", "Tent", "Stargazing"],
+    "imageUrl": "https://images.unsplash.com/photo-1542314831-c6a4d14d8c51?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": true
+  },
+  {
+    "id": 8,
+    "name": "Metropolis Central",
+    "city": "New York",
+    "location": "USA",
+    "price": 350,
+    "rating": 4.4,
+    "type": "Luxury",
+    "amenities": ["Gym", "Business Center", "Restaurant", "Valet"],
+    "imageUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 9,
+    "name": "Cozy Countryside Inn",
+    "city": "Tuscany",
+    "location": "Italy",
+    "price": 95,
+    "rating": 4.7,
+    "type": "Budget",
+    "amenities": ["Vineyard", "Home Cooked Meals", "Garden", "Pet Friendly"],
+    "imageUrl": "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": false
+  },
+  {
+    "id": 10,
+    "name": "Oceanview Paradise",
+    "city": "Santorini",
+    "location": "Greece",
+    "price": 420,
+    "rating": 4.8,
+    "type": "Villa",
+    "amenities": ["Infinity Pool", "Ocean View", "Breakfast", "WiFi"],
+    "imageUrl": "https://images.unsplash.com/photo-1570213489059-0aac6626cade?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "isFavorite": true
+  }
+]
