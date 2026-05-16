@@ -21,8 +21,9 @@ const Navbar = () => {
   }, []);
 
   const links = [
-    { name: 'Stays', path: '/hotels' },
-    { name: 'Experiences', path: '/packages' },
+    { name: 'Hotels & Stays', path: '/hotels' },
+    { name: 'Packages & Tours', path: '/packages' },
+    { name: 'Dashboard', path: '/dashboard' },
   ];
 
   const handleSearchSubmit = (e) => {
@@ -44,56 +45,46 @@ const Navbar = () => {
               <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M21 16.5c0 .38-.21.71-.53.88l-7.9 4.44a1.5 1.5 0 01-1.14 0l-7.9-4.44A1 1 0 013 16.5v-9c0-.38.21-.71.53-.88l7.9-4.44a1.5 1.5 0 011.14 0l7.9 4.44c.32.17.53.5.53.88v9z" />
               </svg>
-              <span className="hidden lg:block">TravelSaarthi</span>
+              <span className="hidden lg:block font-extrabold tracking-tight">TravelSaarthi</span>
             </Link>
           </div>
 
-          {/* Center: Search / Links (Desktop) */}
-          <div className="hidden md:flex flex-1 items-center justify-center">
-            {location.pathname === '/' ? (
-              <div className="flex gap-6 items-center">
-                {links.map((link) => (
-                  <Link
-                    key={link.name}
-                    to={link.path}
-                    className="text-gray-900 font-semibold hover:text-[#FF385C] transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <button 
-                  onClick={() => setIsSearchModalOpen(true)}
-                  className="flex items-center gap-2 px-5 py-2 bg-gray-100 hover:bg-gray-200 rounded-full text-sm font-semibold text-gray-800 transition-colors ml-4"
+          {/* Center: Navigation Links (Desktop) */}
+          <div className="hidden md:flex flex-1 items-center justify-center gap-8">
+            {links.map((link) => {
+              const isActive = location.pathname.startsWith(link.path);
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`text-sm font-bold transition-all py-2 border-b-2 ${
+                    isActive 
+                      ? 'border-[#FF385C] text-[#FF385C]' 
+                      : 'border-transparent text-gray-700 hover:text-[#FF385C]'
+                  }`}
                 >
-                  <Search size={14} className="text-[#FF385C]" /> Search Stays & Tours
-                </button>
-              </div>
-            ) : (
-              <div 
-                onClick={() => setIsSearchModalOpen(true)}
-                className="flex items-center border border-gray-300 rounded-full shadow-sm hover:shadow-md transition-shadow cursor-pointer pl-6 pr-2 py-2"
-              >
-                <span className="text-sm font-semibold text-gray-900 border-r border-gray-300 pr-4">Anywhere</span>
-                <span className="text-sm font-semibold text-gray-900 border-r border-gray-300 px-4">Any week</span>
-                <span className="text-sm text-gray-500 pl-4 pr-3">Add guests</span>
-                <div className="bg-[#FF385C] p-2 rounded-full text-white">
-                  <Search size={14} strokeWidth={3} />
-                </div>
-              </div>
-            )}
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
-          {/* Right: Actions & Profile */}
-          <div className="flex items-center justify-end gap-1 md:gap-2">
-            <Link to="/about" className="hidden md:block text-sm font-semibold text-gray-900 hover:bg-gray-100 px-4 py-2 rounded-full transition-colors">
-              TravelSaarthi your home
-            </Link>
-            <button className="hidden md:block p-2 hover:bg-gray-100 rounded-full transition-colors">
-              <Globe className="w-5 h-5 text-gray-900" />
+          {/* Right: Search, Actions & Profile */}
+          <div className="flex items-center justify-end gap-3 md:gap-4">
+            <button 
+              onClick={() => setIsSearchModalOpen(true)}
+              className="flex items-center gap-2.5 px-4 py-2.5 bg-gray-100 hover:bg-gray-200 rounded-full text-sm font-semibold text-gray-800 transition-colors shadow-sm"
+            >
+              <Search size={16} className="text-[#FF385C]" /> 
+              <span className="hidden sm:inline">Search Anywhere</span>
+            </button>
+
+            <button className="hidden md:flex items-center justify-center w-10 h-10 hover:bg-gray-100 rounded-full transition-colors">
+              <Globe className="w-5 h-5 text-gray-700" />
             </button>
             
             {/* Profile Dropdown */}
-            <div className="relative ml-2">
+            <div className="relative">
               <button 
                 onClick={(e) => { e.stopPropagation(); setIsProfileMenuOpen(!isProfileMenuOpen); }}
                 className="flex items-center gap-3 border border-gray-300 rounded-full p-2 hover:shadow-md transition bg-white"
@@ -139,18 +130,22 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Search */}
-        {location.pathname !== '/' && (
-          <div className="md:hidden pb-4" onClick={() => setIsSearchModalOpen(true)}>
-            <div className="flex items-center border border-gray-300 rounded-full shadow-sm px-4 py-3 bg-gray-50 cursor-pointer">
-              <Search className="w-5 h-5 text-gray-800 mr-3" />
-              <div className="flex flex-col">
-                <span className="text-sm font-semibold text-gray-900 leading-tight">Where to?</span>
-                <span className="text-xs text-gray-500">Anywhere • Any week • Add guests</span>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Mobile Navigation Links */}
+        <div className="md:hidden flex justify-around pb-3 border-t border-gray-100 pt-2">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`text-xs font-bold px-3 py-1.5 rounded-full ${
+                location.pathname.startsWith(link.path)
+                  ? 'bg-[#FF385C] text-white shadow-sm'
+                  : 'text-gray-700 hover:bg-gray-100'
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Global Interactive Search Modal */}

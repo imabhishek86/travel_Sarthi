@@ -20,7 +20,7 @@ const Amenities = ({ amenities }) => {
 
   return (
     <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm mt-8">
-      <h3 className="text-2xl font-bold text-dark mb-6">Popular Amenities</h3>
+      <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-6">Popular Amenities</h3>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {amenities.map((amenity, index) => (
           <div key={index} className="flex items-center gap-3">

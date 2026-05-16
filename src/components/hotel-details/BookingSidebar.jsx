@@ -37,8 +37,8 @@ const BookingSidebar = ({ pricePerNight }) => {
   return (
     <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl sticky top-24">
       <div className="flex items-end gap-1 mb-6">
-        <span className="text-3xl font-extrabold text-dark">${pricePerNight}</span>
-        <span className="text-gray-500 font-medium pb-1">/ night</span>
+        <span className="text-2xl md:text-3xl font-black text-gray-900">${pricePerNight}</span>
+        <span className="text-gray-500 font-medium pb-1 text-sm">/ night</span>
       </div>
 
       <div className="space-y-4 mb-6">
@@ -49,7 +49,7 @@ const BookingSidebar = ({ pricePerNight }) => {
               type="date" 
               value={checkIn}
               onChange={(e) => setCheckIn(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm text-gray-900 font-semibold focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all"
             />
           </div>
           <div>
@@ -58,7 +58,7 @@ const BookingSidebar = ({ pricePerNight }) => {
               type="date" 
               value={checkOut}
               onChange={(e) => setCheckOut(e.target.value)}
-              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all"
+              className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm text-gray-900 font-semibold focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all"
             />
           </div>
         </div>
@@ -68,7 +68,7 @@ const BookingSidebar = ({ pricePerNight }) => {
           <select 
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all appearance-none cursor-pointer"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3 text-sm text-gray-900 font-semibold focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all appearance-none cursor-pointer"
           >
             {[1, 2, 3, 4, 5, 6].map(num => (
               <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
@@ -78,18 +78,18 @@ const BookingSidebar = ({ pricePerNight }) => {
       </div>
 
       {/* Price Breakdown */}
-      <div className="border-t border-gray-100 pt-4 space-y-3 mb-6">
+      <div className="border-t border-gray-100 pt-4 space-y-3 mb-6 text-sm font-medium">
         <div className="flex justify-between text-gray-600">
           <span>${pricePerNight} x {days} nights</span>
-          <span>${basePrice}</span>
+          <span className="text-gray-900 font-bold">${basePrice}</span>
         </div>
         <div className="flex justify-between text-gray-600">
           <span>Taxes & Fees (10%)</span>
-          <span>${taxes}</span>
+          <span className="text-gray-900 font-bold">${taxes}</span>
         </div>
-        <div className="border-t border-dashed border-gray-200 pt-3 flex justify-between items-center font-bold text-lg text-dark">
+        <div className="border-t border-dashed border-gray-200 pt-3 flex justify-between items-center font-bold text-base text-gray-900">
           <span>Total</span>
-          <span className="text-[#FF385C]">${total}</span>
+          <span className="text-[#FF385C] text-xl font-black">${total}</span>
         </div>
       </div>
 

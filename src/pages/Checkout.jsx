@@ -89,7 +89,7 @@ const Checkout = () => {
   if (loading) return <div className="text-center py-20 text-xl animate-pulse">Loading checkout...</div>;
   if (!pkg) return null;
 
-  const totalAmount = pkg.budget;
+  const totalAmount = Number(pkg.budget || 0);
   const discountAmount = (totalAmount * discount) / 100;
   const finalAmount = totalAmount - discountAmount;
 
@@ -105,45 +105,45 @@ const Checkout = () => {
             <h2 className="text-xl font-bold mb-4 text-gray-800">Traveller Details</h2>
             <form id="checkout-form" onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input {...register('fullName')} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" placeholder="John Doe" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Full Name</label>
+                <input {...register('fullName')} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" placeholder="John Doe" />
                 {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" {...register('email')} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" placeholder="john@example.com" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Email</label>
+                <input type="email" {...register('email')} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" placeholder="john@example.com" />
                 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                <input type="tel" {...register('phone')} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" placeholder="+1 234 567 8900" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Phone Number</label>
+                <input type="tel" {...register('phone')} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" placeholder="+1 234 567 8900" />
                 {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Travel Start Date</label>
-                <input type="date" {...register('startDate')} min={new Date().toISOString().split('T')[0]} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Travel Start Date</label>
+                <input type="date" {...register('startDate')} min={new Date().toISOString().split('T')[0]} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" />
                 {errors.startDate && <p className="text-red-500 text-xs mt-1">{errors.startDate.message}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">End Date (Auto-calculated)</label>
-                <input type="date" value={endDate} disabled className="w-full p-3 border border-gray-200 bg-gray-50 rounded-xl text-gray-500 cursor-not-allowed" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">End Date (Auto-calculated)</label>
+                <input type="date" value={endDate} disabled className="w-full p-3.5 bg-gray-100 border border-gray-200 rounded-xl text-gray-600 font-semibold cursor-not-allowed" />
               </div>
             </form>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
             <h2 className="text-xl font-bold mb-4 text-gray-800">Apply Coupon</h2>
-            <div className="flex gap-2">
+            <div className="flex gap-3">
               <input 
                 type="text" 
                 value={couponCode} 
                 onChange={(e) => setCouponCode(e.target.value)} 
-                className="flex-grow p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none uppercase transition-all" 
-                placeholder="Enter coupon code" 
+                className="flex-grow p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none uppercase transition-all" 
+                placeholder="Enter coupon code (e.g., SAVE10)" 
               />
               <button 
                 type="button" 

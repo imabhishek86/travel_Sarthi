@@ -48,8 +48,11 @@ const MyBookings = () => {
   if (loading) return <div className="text-center py-20 animate-pulse text-lg font-medium text-gray-500">Loading your trips...</div>;
 
   return (
-    <div className="container mx-auto max-w-6xl">
-      <h1 className="text-3xl md:text-4xl font-bold mb-10 text-gray-900 tracking-tight">Trips</h1>
+    <div className="container mx-auto max-w-6xl px-4 py-8">
+      <div className="border-b border-gray-200 pb-6 mb-10">
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-1 text-gray-900 tracking-tight">Trips</h1>
+        <p className="text-lg text-gray-500 font-medium">Explore and keep track of all your upcoming and past adventures.</p>
+      </div>
       
       {bookings.length === 0 ? (
         <div className="py-8">
