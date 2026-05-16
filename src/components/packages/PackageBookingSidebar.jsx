@@ -1,23 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { couponService } from '../../services/coupon.service';
+import toast from 'react-hot-toast';
 
 const PackageBookingSidebar = ({ price }) => {
+  const navigate = useNavigate();
   const [date, setDate] = useState('');
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
 
+  const [couponCode, setCouponCode] = useState('');
+  const [discountPercent, setDiscountPercent] = useState(0);
+  const [coupons, setCoupons] = useState([]);
+
+  useEffect(() => {
+    const fetchCoupons = async () => {
+      try {
+        const { data } = await couponService.getAll();
+        setCoupons(data || []);
+      } catch (err) {
+        console.error('Failed to load coupons', err);
+      }
+    };
+    fetchCoupons();
+  }, []);
+
+  const handleApplyCoupon = async (codeToApply) => {
+    const code = codeToApply || couponCode;
+    if (!code) return;
+    try {
+      const { data } = await couponService.validate(code);
+      setDiscountPercent(data.discount_percent);
+      if (codeToApply) setCouponCode(codeToApply);
+      toast.success(`Coupon ${code} applied! ${data.discount_percent}% off.`);
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Invalid or expired coupon');
+      setDiscountPercent(0);
+    }
+  };
+
   const totalTravelers = adults + children;
   
-  // Package calculation logic (e.g. children are 50% off)
+  // Package calculation logic
   const adultPrice = price * adults;
   const childPrice = (price * 0.5) * children;
-  const basePrice = adultPrice + childPrice;
+  const rawBase = adultPrice + childPrice;
+  const discountAmount = Math.round((rawBase * discountPercent) / 100);
+  const basePrice = rawBase - discountAmount;
   const taxes = Math.round(basePrice * 0.12); // 12% tax/fees
   const total = basePrice + taxes;
+
+  const handleReserve = () => {
+    if (!date) {
+      toast.error('Please select a travel date.');
+      return;
+    }
+    toast.success('Package booked successfully! Your itinerary is being prepared.');
+    navigate('/dashboard/bookings');
+  };
 
   return (
     <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-xl sticky top-24">
       <div className="flex items-end gap-1 mb-8 pb-6 border-b border-gray-100">
-        <span className="text-4xl font-extrabold text-dark">${price}</span>
+        <span className="text-3xl md:text-4xl font-black text-gray-900">${price}</span>
         <span className="text-gray-500 font-medium pb-1">/ person</span>
       </div>
 
@@ -28,7 +73,7 @@ const PackageBookingSidebar = ({ price }) => {
             type="date" 
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-700 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+            className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-900 font-semibold focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all"
           />
         </div>
 
@@ -38,15 +83,15 @@ const PackageBookingSidebar = ({ price }) => {
             <div className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-xl p-2">
               <button 
                 onClick={() => setAdults(Math.max(1, adults - 1))}
-                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-primary transition-colors disabled:opacity-50"
+                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#FF385C] transition-colors disabled:opacity-50 font-bold"
                 disabled={adults <= 1}
               >
                 -
               </button>
-              <span className="font-bold text-dark">{adults}</span>
+              <span className="font-bold text-gray-900">{adults}</span>
               <button 
                 onClick={() => setAdults(adults + 1)}
-                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
+                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#FF385C] transition-colors font-bold"
               >
                 +
               </button>
@@ -57,15 +102,15 @@ const PackageBookingSidebar = ({ price }) => {
             <div className="flex items-center justify-between bg-gray-50 border border-gray-200 rounded-xl p-2">
               <button 
                 onClick={() => setChildren(Math.max(0, children - 1))}
-                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-primary transition-colors disabled:opacity-50"
+                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#FF385C] transition-colors disabled:opacity-50 font-bold"
                 disabled={children <= 0}
               >
                 -
               </button>
-              <span className="font-bold text-dark">{children}</span>
+              <span className="font-bold text-gray-900">{children}</span>
               <button 
                 onClick={() => setChildren(children + 1)}
-                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-primary transition-colors"
+                className="w-10 h-10 rounded-lg bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#FF385C] transition-colors font-bold"
               >
                 +
               </button>
@@ -74,29 +119,79 @@ const PackageBookingSidebar = ({ price }) => {
         </div>
       </div>
 
+      {/* Available Coupons */}
+      {coupons.length > 0 && (
+        <div className="mb-4">
+          <span className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">Available Coupons</span>
+          <div className="flex flex-wrap gap-2">
+            {coupons.map((c) => (
+              <button
+                key={c.code}
+                type="button"
+                onClick={() => handleApplyCoupon(c.code)}
+                className={`text-xs font-bold px-2.5 py-1.5 rounded-lg border transition-all ${
+                  couponCode.toUpperCase() === c.code.toUpperCase() && discountPercent > 0
+                    ? 'bg-[#FF385C] text-white border-[#FF385C] shadow-sm'
+                    : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
+                }`}
+              >
+                🏷️ {c.code} ({c.discount_percent}% OFF)
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Coupon Input */}
+      <div className="flex gap-2 mb-8">
+        <input 
+          type="text" 
+          value={couponCode} 
+          onChange={(e) => setCouponCode(e.target.value)} 
+          placeholder="Enter coupon code" 
+          className="w-full bg-gray-50 border border-gray-200 rounded-xl p-3.5 text-sm text-gray-900 font-semibold focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none uppercase transition-all"
+        />
+        <button 
+          type="button" 
+          onClick={() => handleApplyCoupon()} 
+          className="bg-gray-900 hover:bg-black text-white px-5 py-3.5 rounded-xl text-sm font-bold transition-colors"
+        >
+          Apply
+        </button>
+      </div>
+
       {/* Price Breakdown */}
-      <div className="bg-gray-50 rounded-2xl p-6 mb-8 space-y-3">
+      <div className="bg-gray-50 rounded-2xl p-6 mb-8 space-y-3 font-medium text-sm">
         <div className="flex justify-between text-gray-600 font-medium">
           <span>Adults x {adults}</span>
-          <span>${adultPrice}</span>
+          <span className="text-gray-900 font-bold">${adultPrice}</span>
         </div>
         {children > 0 && (
           <div className="flex justify-between text-gray-600 font-medium">
             <span>Children x {children}</span>
-            <span>${childPrice}</span>
+            <span className="text-gray-900 font-bold">${childPrice}</span>
+          </div>
+        )}
+        {discountPercent > 0 && (
+          <div className="flex justify-between text-emerald-600 font-bold">
+            <span>Discount ({discountPercent}%)</span>
+            <span>-${discountAmount}</span>
           </div>
         )}
         <div className="flex justify-between text-gray-600 font-medium">
           <span>Taxes & Fees (12%)</span>
-          <span>${taxes}</span>
+          <span className="text-gray-900 font-bold">${taxes}</span>
         </div>
-        <div className="border-t border-gray-200 pt-4 mt-2 flex justify-between items-center">
-          <span className="font-bold text-lg text-dark">Total</span>
-          <span className="text-2xl font-extrabold text-primary">${total}</span>
+        <div className="border-t border-gray-200 pt-4 mt-2 flex justify-between items-center text-base">
+          <span className="font-bold text-gray-900">Total</span>
+          <span className="text-2xl font-black text-[#FF385C]">${total}</span>
         </div>
       </div>
 
-      <button className="w-full py-4 bg-primary text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:bg-primary-hover transform hover:-translate-y-1 transition-all">
+      <button 
+        onClick={handleReserve}
+        className="w-full py-4 bg-[#FF385C] text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:bg-[#D70466] transform hover:-translate-y-1 transition-all"
+      >
         Book Package Now
       </button>
       

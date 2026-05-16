@@ -51,16 +51,16 @@ const Contact = () => {
   ];
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen transition-colors duration-300">
+    <div className="bg-gray-50 min-h-screen transition-colors duration-300">
       {/* Hero Banner */}
       <div className="relative h-[40vh] md:h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-fixed"></div>
-          <div className="absolute inset-0 bg-dark/70"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <FadeUp className="relative z-10 text-center px-4 max-w-3xl mx-auto mt-16">
-          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6">Get in Touch</h1>
-          <p className="text-xl text-gray-200">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">Get in Touch</h1>
+          <p className="text-xl text-gray-200 font-medium">
             Have questions about a package or need custom travel advice? Our team is here to help you 24/7.
           </p>
         </FadeUp>
@@ -70,36 +70,36 @@ const Contact = () => {
         
         {/* Info Cards Grid */}
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          <StaggerItem className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-800 text-center group hover:-translate-y-2 transition-transform duration-300">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <StaggerItem className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 text-center group hover:-translate-y-2 transition-transform duration-300">
+            <div className="w-14 h-14 bg-[#FF385C]/10 text-[#FF385C] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
             </div>
-            <h3 className="font-bold text-dark dark:text-white text-lg mb-2">Email Us</h3>
-            <p className="text-gray-500 dark:text-gray-400">abhi32348@gmail.com</p>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Email Us</h3>
+            <p className="text-gray-500 font-medium text-sm">abhi32348@gmail.com</p>
           </StaggerItem>
           
-          <StaggerItem className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-800 text-center group hover:-translate-y-2 transition-transform duration-300">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <StaggerItem className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 text-center group hover:-translate-y-2 transition-transform duration-300">
+            <div className="w-14 h-14 bg-[#FF385C]/10 text-[#FF385C] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.896-1.596-5.48-4.08-7.074-6.97l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" /></svg>
             </div>
-            <h3 className="font-bold text-dark dark:text-white text-lg mb-2">Call Us</h3>
-            <p className="text-gray-500 dark:text-gray-400">+91 6204859723</p>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Call Us</h3>
+            <p className="text-gray-500 font-medium text-sm">+91 6204859723</p>
           </StaggerItem>
 
-          <StaggerItem className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-800 text-center group hover:-translate-y-2 transition-transform duration-300">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <StaggerItem className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 text-center group hover:-translate-y-2 transition-transform duration-300">
+            <div className="w-14 h-14 bg-[#FF385C]/10 text-[#FF385C] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
             </div>
-            <h3 className="font-bold text-dark dark:text-white text-lg mb-2">Location</h3>
-            <p className="text-gray-500 dark:text-gray-400">Punjab, India</p>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Location</h3>
+            <p className="text-gray-500 font-medium text-sm">Punjab, India</p>
           </StaggerItem>
 
-          <StaggerItem className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-lg border border-gray-100 dark:border-gray-800 text-center group hover:-translate-y-2 transition-transform duration-300">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+          <StaggerItem className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 text-center group hover:-translate-y-2 transition-transform duration-300">
+            <div className="w-14 h-14 bg-[#FF385C]/10 text-[#FF385C] rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
             </div>
-            <h3 className="font-bold text-dark dark:text-white text-lg mb-2">Support Hours</h3>
-            <p className="text-gray-500 dark:text-gray-400">24/7 Available</p>
+            <h3 className="font-bold text-gray-900 text-lg mb-2">Support Hours</h3>
+            <p className="text-gray-500 font-medium text-sm">24/7 Available</p>
           </StaggerItem>
         </StaggerContainer>
 
@@ -107,74 +107,74 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
           
           {/* Contact Form */}
-          <FadeUp className="bg-white dark:bg-gray-900 p-8 md:p-10 rounded-3xl shadow-md border border-gray-100 dark:border-gray-800">
-            <h2 className="text-3xl font-extrabold text-dark dark:text-white mb-2">Send us a Message</h2>
-            <p className="text-gray-500 dark:text-gray-400 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
+          <FadeUp className="bg-white p-8 md:p-10 rounded-3xl shadow-md border border-gray-100">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-2 tracking-tight">Send us a Message</h2>
+            <p className="text-gray-500 mb-8 font-medium">Fill out the form below and we'll get back to you within 24 hours.</p>
             
             {isSuccess ? (
-              <div className="bg-green-50 border border-green-200 text-green-700 p-6 rounded-2xl text-center">
+              <div className="bg-green-50 border border-green-200 text-green-700 p-6 rounded-2xl text-center font-medium">
                 <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8 text-green-500"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
                 </div>
-                <h3 className="text-xl font-bold mb-2">Message Sent Successfully!</h3>
+                <h3 className="text-xl font-bold mb-2 text-gray-900">Message Sent Successfully!</h3>
                 <p>Thank you for reaching out. Our team will contact you shortly.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6 font-medium">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">Your Name</label>
                     <input 
                       type="text" 
                       name="name"
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-dark dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all font-semibold"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                    <label className="block text-sm font-bold text-gray-700 mb-2">Email Address</label>
                     <input 
                       type="email" 
                       name="email"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-dark dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                      className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all font-semibold"
                       placeholder="john@example.com"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Subject</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Subject</label>
                   <input 
                     type="text" 
                     name="subject"
                     required
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-dark dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all font-semibold"
                     placeholder="How can we help you?"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                  <label className="block text-sm font-bold text-gray-700 mb-2">Message</label>
                   <textarea 
                     name="message"
                     required
                     value={formData.message}
                     onChange={handleChange}
                     rows="5"
-                    className="w-full bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 text-dark dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none"
+                    className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 text-gray-900 focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all resize-none font-semibold"
                     placeholder="Write your message here..."
                   ></textarea>
                 </div>
                 <button 
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary-hover shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="w-full py-4 bg-[#FF385C] text-white rounded-xl font-bold text-lg hover:bg-[#D70466] shadow-lg transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? (
                     <>
@@ -193,18 +193,17 @@ const Contact = () => {
           </FadeUp>
 
           {/* Map Placeholder */}
-          <div className="h-full min-h-[400px] bg-gray-200 rounded-3xl overflow-hidden relative shadow-md">
-             {/* Realistic Map placeholder image using a map tile aesthetic */}
+          <div className="h-full min-h-[400px] bg-gray-200 rounded-3xl overflow-hidden relative shadow-md border border-gray-100">
              <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Map Location" className="w-full h-full object-cover" />
-             <div className="absolute inset-0 bg-dark/10 flex items-center justify-center">
-                <div className="bg-white p-4 rounded-full shadow-2xl animate-bounce">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-primary"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+             <div className="absolute inset-0 bg-black/10 flex items-center justify-center">
+                <div className="bg-white p-4 rounded-full shadow-2xl animate-bounce text-[#FF385C]">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
                 </div>
              </div>
              {/* Map detail card */}
-             <div className="absolute bottom-6 left-6 right-6 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white/50 dark:border-gray-800">
-               <h4 className="font-bold text-dark dark:text-white">TravelSaarthi Headquarters</h4>
-               <p className="text-sm text-gray-600 dark:text-gray-400">Punjab, India</p>
+             <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-lg border border-white">
+               <h4 className="font-bold text-gray-900">TravelSaarthi Headquarters</h4>
+               <p className="text-sm text-gray-600 font-medium">Punjab, India</p>
              </div>
           </div>
 
@@ -213,17 +212,17 @@ const Contact = () => {
         {/* FAQ Section */}
         <FadeUp className="max-w-3xl mx-auto mb-20">
           <div className="text-center mb-10">
-            <h2 className="text-3xl font-extrabold text-dark dark:text-white mb-4">Frequently Asked Questions</h2>
-            <p className="text-gray-500 dark:text-gray-400">Find quick answers to common questions about our services.</p>
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-4 tracking-tight">Frequently Asked Questions</h2>
+            <p className="text-gray-500 font-medium text-lg">Find quick answers to common questions about our services.</p>
           </div>
-          <div className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-2">
+          <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4">
              <Accordion items={faqItems} />
           </div>
         </FadeUp>
 
         {/* Social Media Section */}
-        <FadeUp className="bg-primary/5 dark:bg-gray-900 rounded-3xl p-10 text-center border border-primary/10 dark:border-gray-800">
-          <h3 className="text-2xl font-bold text-dark dark:text-white mb-6">Connect With Us</h3>
+        <FadeUp className="bg-gray-50 rounded-3xl p-10 text-center border border-gray-100 shadow-sm">
+          <h3 className="text-2xl font-extrabold text-gray-900 mb-6 tracking-tight">Connect With Us</h3>
           <div className="flex justify-center gap-4">
             {/* LinkedIn */}
             <a 

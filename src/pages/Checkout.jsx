@@ -26,6 +26,7 @@ const Checkout = () => {
   const [couponCode, setCouponCode] = useState('');
   const [discount, setDiscount] = useState(0);
   const [couponError, setCouponError] = useState('');
+  const [coupons, setCoupons] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
@@ -41,6 +42,7 @@ const Checkout = () => {
       return;
     }
     fetchPackage();
+    fetchCoupons();
   }, [packageId]);
 
   const fetchPackage = async () => {
@@ -55,13 +57,24 @@ const Checkout = () => {
     }
   };
 
-  const handleApplyCoupon = async () => {
-    if (!couponCode) return;
+  const fetchCoupons = async () => {
+    try {
+      const { data } = await couponService.getAll();
+      setCoupons(data || []);
+    } catch (err) {
+      console.error('Failed to load coupons', err);
+    }
+  };
+
+  const handleApplyCoupon = async (codeToApply) => {
+    const code = typeof codeToApply === 'string' ? codeToApply : couponCode;
+    if (!code) return;
     try {
       setCouponError('');
-      const { data } = await couponService.validate(couponCode);
+      const { data } = await couponService.validate(code);
       setDiscount(data.discount_percent);
-      toast.success('Coupon applied successfully!');
+      if (typeof codeToApply === 'string') setCouponCode(codeToApply);
+      toast.success(`Coupon ${code} applied successfully! ${data.discount_percent}% off.`);
     } catch (error) {
       setDiscount(0);
       setCouponError(error.response?.data?.message || 'Invalid coupon code');
@@ -89,7 +102,7 @@ const Checkout = () => {
   if (loading) return <div className="text-center py-20 text-xl animate-pulse">Loading checkout...</div>;
   if (!pkg) return null;
 
-  const totalAmount = pkg.budget;
+  const totalAmount = Number(pkg.budget || 0);
   const discountAmount = (totalAmount * discount) / 100;
   const finalAmount = totalAmount - discountAmount;
 
@@ -105,50 +118,74 @@ const Checkout = () => {
             <h2 className="text-xl font-bold mb-4 text-gray-800">Traveller Details</h2>
             <form id="checkout-form" onSubmit={handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                <input {...register('fullName')} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" placeholder="John Doe" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Full Name</label>
+                <input {...register('fullName')} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" placeholder="John Doe" />
                 {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName.message}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input type="email" {...register('email')} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" placeholder="john@example.com" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Email</label>
+                <input type="email" {...register('email')} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" placeholder="john@example.com" />
                 {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                <input type="tel" {...register('phone')} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" placeholder="+1 234 567 8900" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Phone Number</label>
+                <input type="tel" {...register('phone')} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" placeholder="+1 234 567 8900" />
                 {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone.message}</p>}
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Travel Start Date</label>
-                <input type="date" {...register('startDate')} min={new Date().toISOString().split('T')[0]} className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none transition-all" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">Travel Start Date</label>
+                <input type="date" {...register('startDate')} min={new Date().toISOString().split('T')[0]} className="w-full p-3.5 bg-gray-50 text-gray-900 font-semibold border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition-all" />
                 {errors.startDate && <p className="text-red-500 text-xs mt-1">{errors.startDate.message}</p>}
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">End Date (Auto-calculated)</label>
-                <input type="date" value={endDate} disabled className="w-full p-3 border border-gray-200 bg-gray-50 rounded-xl text-gray-500 cursor-not-allowed" />
+                <label className="block text-sm font-semibold text-gray-800 mb-1">End Date (Auto-calculated)</label>
+                <input type="date" value={endDate} disabled className="w-full p-3.5 bg-gray-100 border border-gray-200 rounded-xl text-gray-600 font-semibold cursor-not-allowed" />
               </div>
             </form>
           </div>
 
           <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">Apply Coupon</h2>
-            <div className="flex gap-2">
+            <h2 className="text-xl font-bold mb-3 text-gray-800">Apply Coupon</h2>
+            
+            {/* Available Coupons */}
+            {coupons.length > 0 && (
+              <div className="mb-4">
+                <span className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Available Offers</span>
+                <div className="flex flex-wrap gap-2">
+                  {coupons.map((c) => (
+                    <button
+                      key={c.code}
+                      type="button"
+                      onClick={() => handleApplyCoupon(c.code)}
+                      className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition-all ${
+                        couponCode.toUpperCase() === c.code.toUpperCase() && discount > 0
+                          ? 'bg-[#FF385C] text-white border-[#FF385C] shadow-sm'
+                          : 'bg-emerald-50 text-emerald-700 border-emerald-200 hover:bg-emerald-100'
+                      }`}
+                    >
+                      🏷️ {c.code} ({c.discount_percent}% OFF)
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex gap-3">
               <input 
                 type="text" 
                 value={couponCode} 
                 onChange={(e) => setCouponCode(e.target.value)} 
-                className="flex-grow p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500/20 focus:border-rose-500 outline-none uppercase transition-all" 
-                placeholder="Enter coupon code" 
+                className="flex-grow p-3.5 bg-gray-50 text-gray-900 font-semibold placeholder-gray-400 border border-gray-300 rounded-xl focus:bg-white focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none uppercase transition-all" 
+                placeholder="Enter coupon code (e.g., SAVE10)" 
               />
               <button 
                 type="button" 
-                onClick={handleApplyCoupon}
-                className="bg-gray-900 text-white px-6 py-3 rounded-xl hover:bg-black transition font-semibold"
+                onClick={() => handleApplyCoupon()}
+                className="bg-gray-900 text-white px-6 py-3 rounded-xl hover:bg-black transition font-bold text-sm"
               >
                 Apply
               </button>

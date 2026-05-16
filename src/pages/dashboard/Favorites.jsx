@@ -25,8 +25,11 @@ const Favorites = () => {
   };
 
   return (
-    <div className="container mx-auto max-w-6xl">
-      <h1 className="text-3xl font-bold text-gray-900 mb-8">Wishlists</h1>
+    <div className="container mx-auto max-w-6xl px-4 py-8">
+      <div className="border-b border-gray-200 pb-6 mb-10">
+        <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Wishlists</h1>
+        <p className="text-lg text-gray-500 mt-1 font-medium">Explore and plan your saved stays and favorite experiences.</p>
+      </div>
 
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -20,10 +20,10 @@ const Accordion = ({ items }) => {
               onClick={() => toggleItem(index)}
               className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
             >
-              <span className={`font-bold text-lg transition-colors ${isOpen ? 'text-primary' : 'text-dark'}`}>
+              <span className={`font-bold text-lg transition-colors ${isOpen ? 'text-[#FF385C]' : 'text-gray-900'}`}>
                 {item.question}
               </span>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-primary/10 text-primary rotate-180' : 'bg-gray-200 text-gray-500'}`}>
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#FF385C]/10 text-[#FF385C] rotate-180' : 'bg-gray-200 text-gray-500'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                 </svg>

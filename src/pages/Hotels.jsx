@@ -96,19 +96,19 @@ const Hotels = () => {
   }, [hotels, searchQuery, filters, sortBy]);
 
   return (
-    <div className="bg-gray-50 dark:bg-gray-950 min-h-screen pb-20 transition-colors duration-300">
-      {/* Top Banner */}
-      <div className="bg-dark dark:bg-gray-900 text-white py-16 px-4 border-b border-gray-100/10 dark:border-gray-800">
+    <div className="bg-white min-h-screen pb-20 pt-24 transition-colors duration-300">
+      {/* Top Banner - Premium Airbnb White Theme */}
+      <div className="bg-white py-12 px-4 border-b border-gray-100 shadow-sm">
         <FadeUp className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Perfect Stay</h1>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto mb-8">
-            Discover luxury resorts, cozy villas, and budget-friendly hotels in top destinations around the world.
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 tracking-tight">Find Your Perfect Stay</h1>
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8 font-medium">
+            Discover luxury resorts, cozy villas, and boutique stays in top destinations around the world.
           </p>
           
           {/* Main Search Bar */}
-          <div className="max-w-3xl mx-auto relative group">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-gray-500">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6">
+          <div className="max-w-3xl mx-auto relative group shadow-xl rounded-full border border-gray-200 bg-white">
+            <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-[#FF385C]">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
               </svg>
             </div>
@@ -117,7 +117,7 @@ const Hotels = () => {
               placeholder="Search by hotel name, city, or location..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-transparent dark:bg-gray-800 dark:border-gray-700 dark:text-white focus:border-primary focus:ring-4 focus:ring-primary/20 outline-none text-dark text-lg shadow-lg transition-all"
+              className="w-full pl-14 pr-6 py-4 rounded-full border-0 outline-none text-gray-900 bg-transparent text-lg font-medium placeholder-gray-400"
             />
           </div>
         </FadeUp>
@@ -125,10 +125,10 @@ const Hotels = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         {/* Toolbar: Mobile Filter Toggle & Sorting */}
-        <div className="flex flex-col sm:flex-row justify-between items-center bg-white dark:bg-gray-900 p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 mb-8 gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-8 gap-4">
           <button 
             onClick={() => setIsMobileFilterOpen(true)}
-            className="lg:hidden flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-2.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-dark dark:text-white rounded-xl font-medium transition-colors"
+            className="lg:hidden flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-xl font-semibold transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
@@ -136,16 +136,16 @@ const Hotels = () => {
             Filters
           </button>
 
-          <div className="text-gray-500 dark:text-gray-400 font-medium">
-            Showing <span className="text-dark dark:text-white font-bold">{filteredAndSortedHotels.length}</span> properties
+          <div className="text-gray-500 font-medium text-sm sm:text-base">
+            Showing <span className="text-gray-900 font-bold">{filteredAndSortedHotels.length}</span> properties
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <span className="text-gray-500 dark:text-gray-400 text-sm whitespace-nowrap">Sort by:</span>
+            <span className="text-gray-500 text-sm font-medium whitespace-nowrap">Sort by:</span>
             <select 
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full sm:w-auto bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-dark dark:text-white text-sm rounded-xl focus:ring-primary focus:border-primary block p-2.5 outline-none cursor-pointer"
+              className="w-full sm:w-auto bg-gray-50 border border-gray-200 text-gray-900 text-sm font-semibold rounded-xl focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] block p-2.5 outline-none cursor-pointer"
             >
               <option value="recommended">Recommended</option>
               <option value="priceLow">Price: Low to High</option>
@@ -158,7 +158,7 @@ const Hotels = () => {
         <div className="flex flex-col lg:flex-row gap-8">
           {/* Desktop Sidebar Filter */}
           <div className="hidden lg:block w-1/4 flex-shrink-0">
-            <div className="sticky top-24">
+            <div className="sticky top-28">
               <HotelFilter filters={filters} setFilters={setFilters} />
             </div>
           </div>
@@ -187,19 +187,19 @@ const Hotels = () => {
                 {[1, 2, 3, 4, 5, 6].map(i => <SkeletonCard key={i} />)}
               </div>
             ) : error ? (
-              <FadeUp className="bg-red-50 dark:bg-red-900/20 rounded-2xl border border-red-100 dark:border-red-800 p-12 text-center flex flex-col items-center justify-center min-h-[400px]">
-                <div className="w-20 h-20 bg-red-100 dark:bg-red-900/50 rounded-full flex items-center justify-center mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-red-600 dark:text-red-400">
+              <FadeUp className="bg-red-50 rounded-2xl border border-red-100 p-12 text-center flex flex-col items-center justify-center min-h-[400px]">
+                <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10 text-red-600">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-red-800 dark:text-red-400 mb-2">Something went wrong</h3>
-                <p className="text-red-600 dark:text-red-300 max-w-md mx-auto mb-6">
+                <h3 className="text-2xl font-bold text-red-800 mb-2">Something went wrong</h3>
+                <p className="text-red-600 max-w-md mx-auto mb-6 font-medium">
                   {error}
                 </p>
                 <button 
                   onClick={fetchHotels}
-                  className="px-6 py-3 bg-red-600 text-white font-semibold rounded-xl hover:bg-red-700 transition-colors"
+                  className="px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-colors shadow-sm"
                 >
                   Try Again
                 </button>
@@ -214,14 +214,14 @@ const Hotels = () => {
               </StaggerContainer>
             ) : (
               /* Empty State */
-              <FadeUp className="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-12 text-center flex flex-col items-center justify-center min-h-[400px]">
-                <div className="w-24 h-24 bg-gray-50 dark:bg-gray-800 rounded-full flex items-center justify-center mb-6">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 text-gray-400 dark:text-gray-500">
+              <FadeUp className="bg-white rounded-2xl border border-gray-200 p-12 text-center flex flex-col items-center justify-center min-h-[400px] shadow-sm">
+                <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6 border border-gray-100">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-12 h-12 text-gray-400">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-dark dark:text-white mb-2">No hotels found</h3>
-                <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">No hotels found</h3>
+                <p className="text-gray-500 max-w-md mx-auto mb-6 font-medium">
                   We couldn't find any properties matching your current search and filter criteria. Try adjusting your filters or search query.
                 </p>
                 <button 
@@ -229,7 +229,7 @@ const Hotels = () => {
                     setSearchQuery('');
                     setFilters({ priceRange: 1000, types: [], ratings: [] });
                   }}
-                  className="px-6 py-3 bg-primary/10 text-primary dark:text-primary font-semibold rounded-xl hover:bg-primary/20 transition-colors"
+                  className="px-6 py-3 bg-[#FF385C]/10 text-[#FF385C] font-bold rounded-xl hover:bg-[#FF385C]/20 transition-colors shadow-sm"
                 >
                   Clear all filters
                 </button>

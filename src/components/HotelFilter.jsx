@@ -32,11 +32,11 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm h-full overflow-y-auto">
+    <div className="bg-white p-6 rounded-3xl border border-gray-100 shadow-sm h-full overflow-y-auto">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold text-dark dark:text-white">Filters</h2>
+        <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">Filters</h2>
         <div className="flex items-center gap-2">
-          <button onClick={clearFilters} className="text-sm text-primary hover:text-primary-hover font-medium">
+          <button onClick={clearFilters} className="text-sm text-[#FF385C] hover:underline font-bold">
             Clear All
           </button>
           {onClose && (
@@ -51,7 +51,7 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
 
       {/* Price Range */}
       <div className="mb-8">
-        <h3 className="font-semibold text-dark dark:text-white mb-4">Price per night</h3>
+        <h3 className="font-bold text-gray-900 mb-4">Price per night</h3>
         <input 
           type="range" 
           min="0" 
@@ -59,17 +59,17 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
           step="50"
           value={filters.priceRange} 
           onChange={handlePriceChange}
-          className="w-full accent-primary"
+          className="w-full accent-[#FF385C]"
         />
-        <div className="flex justify-between text-sm text-gray-500 dark:text-gray-400 mt-2">
+        <div className="flex justify-between text-sm text-gray-500 font-medium mt-2">
           <span>$0</span>
-          <span className="font-semibold text-primary dark:text-primary">Up to ${filters.priceRange}</span>
+          <span className="font-bold text-[#FF385C]">Up to ${filters.priceRange}</span>
         </div>
       </div>
 
       {/* Hotel Type */}
       <div className="mb-8">
-        <h3 className="font-semibold text-dark dark:text-white mb-4">Property Type</h3>
+        <h3 className="font-bold text-gray-900 mb-4">Property Type</h3>
         <div className="space-y-3">
           {['Luxury', 'Budget', 'Resort', 'Villa'].map(type => (
             <label key={type} className="flex items-center group cursor-pointer">
@@ -77,9 +77,9 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
                 type="checkbox" 
                 checked={filters.types.includes(type)}
                 onChange={() => handleTypeChange(type)}
-                className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-800 text-primary focus:ring-primary cursor-pointer"
+                className="w-4 h-4 rounded border-gray-300 text-[#FF385C] focus:ring-[#FF385C] cursor-pointer"
               />
-              <span className="ml-3 text-gray-600 dark:text-gray-400 group-hover:text-dark dark:group-hover:text-white transition-colors">{type}</span>
+              <span className="ml-3 text-gray-700 group-hover:text-gray-900 font-medium transition-colors">{type}</span>
             </label>
           ))}
         </div>
@@ -87,7 +87,7 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
 
       {/* Star Rating */}
       <div className="mb-8">
-        <h3 className="font-semibold text-dark dark:text-white mb-4">Star Rating</h3>
+        <h3 className="font-bold text-gray-900 mb-4">Star Rating</h3>
         <div className="space-y-3">
           {[5, 4, 3].map(rating => (
             <label key={rating} className="flex items-center group cursor-pointer">
@@ -95,9 +95,9 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
                 type="checkbox" 
                 checked={filters.ratings.includes(rating)}
                 onChange={() => handleRatingChange(rating)}
-                className="w-4 h-4 rounded border-gray-300 dark:border-gray-600 dark:bg-gray-800 text-primary focus:ring-primary cursor-pointer"
+                className="w-4 h-4 rounded border-gray-300 text-[#FF385C] focus:ring-[#FF385C] cursor-pointer"
               />
-              <span className="ml-3 flex items-center text-gray-600 dark:text-gray-400 group-hover:text-dark dark:group-hover:text-white transition-colors">
+              <span className="ml-3 flex items-center text-gray-700 group-hover:text-gray-900 font-medium transition-colors">
                 {rating} <span className="text-yellow-400 ml-1">⭐</span> & Up
               </span>
             </label>
@@ -108,7 +108,7 @@ const HotelFilter = ({ filters, setFilters, onClose }) => {
       {onClose && (
         <button 
           onClick={onClose}
-          className="w-full py-3 bg-primary text-white rounded-xl font-bold hover:bg-primary-hover lg:hidden"
+          className="w-full py-3.5 bg-[#FF385C] text-white rounded-2xl font-bold hover:bg-[#D70466] shadow-md lg:hidden"
         >
           Apply Filters
         </button>

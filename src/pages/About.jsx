@@ -33,22 +33,22 @@ const About = () => {
   ];
 
   return (
-    <div className="bg-white dark:bg-gray-950 min-h-screen transition-colors duration-300">
+    <div className="bg-white min-h-screen transition-colors duration-300">
       {/* Hero Section */}
       <div className="relative h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center bg-fixed"></div>
-          <div className="absolute inset-0 bg-dark/60"></div>
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <FadeUp className="relative z-10 text-center px-4 max-w-4xl mx-auto animate-fade-in-up">
-          <span className="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">About Us</span>
-          <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg">
-            Redefining How You <span className="text-primary">Experience</span> the World
+          <span className="text-[#FF385C] font-bold tracking-widest uppercase text-sm mb-4 block">About Us</span>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 drop-shadow-lg tracking-tight">
+            Redefining How You <span className="text-[#FF385C]">Experience</span> the World
           </h1>
           <p className="text-xl text-gray-200 mb-10 max-w-2xl mx-auto leading-relaxed">
             We are a smart tourism platform dedicated to crafting unforgettable journeys through innovative technology and expert local knowledge.
           </p>
-          <Link to="/packages" className="inline-block px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary-hover transition-all shadow-lg hover:-translate-y-1">
+          <Link to="/packages" className="inline-block px-8 py-4 bg-[#FF385C] text-white font-bold rounded-xl hover:bg-[#D70466] transition-all shadow-lg hover:-translate-y-1">
             Discover Our Packages
           </Link>
         </FadeUp>
@@ -58,22 +58,22 @@ const About = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <FadeUp className="flex flex-col lg:flex-row items-center gap-16">
           <div className="lg:w-1/2 space-y-6">
-            <h2 className="text-4xl font-extrabold text-dark dark:text-white">Our Mission & Vision</h2>
-            <div className="w-20 h-1.5 bg-primary rounded-full"></div>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed pt-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Our Mission & Vision</h2>
+            <div className="w-20 h-1.5 bg-[#FF385C] rounded-full"></div>
+            <p className="text-lg text-gray-600 leading-relaxed pt-4 font-medium">
               Founded in 2023, TravelSaarthi was born out of a simple idea: travel planning shouldn't be a chore. It should be the exciting first step of your adventure. 
             </p>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed font-medium">
               Our mission is to democratize premium travel by leveraging smart technology. We envision a world where anyone can access personalized, luxury travel experiences regardless of their budget or destination. We don't just book trips; we create seamless, end-to-end travel experiences that leave lasting memories.
             </p>
             <div className="pt-4 grid grid-cols-2 gap-6">
-              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl border border-gray-100 dark:border-gray-800">
-                <h4 className="font-bold text-dark dark:text-white mb-2 text-xl">Innovation</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Pioneering AI in tourism</p>
+              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100 shadow-sm">
+                <h4 className="font-bold text-gray-900 mb-1 text-xl">Innovation</h4>
+                <p className="text-sm text-gray-500 font-medium">Pioneering AI in tourism</p>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-2xl border border-gray-100 dark:border-gray-800">
-                <h4 className="font-bold text-dark dark:text-white mb-2 text-xl">Authenticity</h4>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Real local experiences</p>
+              <div className="bg-gray-50 p-5 rounded-2xl border border-gray-100 shadow-sm">
+                <h4 className="font-bold text-gray-900 mb-1 text-xl">Authenticity</h4>
+                <p className="text-sm text-gray-500 font-medium">Real local experiences</p>
               </div>
             </div>
           </div>
@@ -85,100 +85,92 @@ const About = () => {
       </div>
 
       {/* Statistics Section */}
-      <div className="bg-dark text-white py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/10"></div>
+      <div className="bg-gray-900 text-white py-20 relative overflow-hidden rounded-3xl max-w-7xl mx-auto my-6 shadow-xl">
+        <div className="absolute inset-0 bg-[#FF385C]/5"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
             <div>
-              <div className="text-5xl font-extrabold text-primary mb-2">
+              <div className="text-5xl font-extrabold text-[#FF385C] mb-2">
                 <StatCounter end={50} suffix="k+" />
               </div>
-              <div className="text-gray-300 font-medium tracking-wide uppercase text-sm">Happy Travelers</div>
+              <div className="text-gray-300 font-bold tracking-wider uppercase text-xs">Happy Travelers</div>
             </div>
             <div>
-              <div className="text-5xl font-extrabold text-primary mb-2">
+              <div className="text-5xl font-extrabold text-[#FF385C] mb-2">
                 <StatCounter end={1200} suffix="+" />
               </div>
-              <div className="text-gray-300 font-medium tracking-wide uppercase text-sm">Hotels Partnered</div>
+              <div className="text-gray-300 font-bold tracking-wider uppercase text-xs">Hotels Partnered</div>
             </div>
             <div>
-              <div className="text-5xl font-extrabold text-primary mb-2">
+              <div className="text-5xl font-extrabold text-[#FF385C] mb-2">
                 <StatCounter end={300} suffix="+" />
               </div>
-              <div className="text-gray-300 font-medium tracking-wide uppercase text-sm">Packages Available</div>
+              <div className="text-gray-300 font-bold tracking-wider uppercase text-xs">Packages Available</div>
             </div>
             <div>
-              <div className="text-5xl font-extrabold text-primary mb-2">
+              <div className="text-5xl font-extrabold text-[#FF385C] mb-2">
                 <StatCounter end={85} />
               </div>
-              <div className="text-gray-300 font-medium tracking-wide uppercase text-sm">Destinations Covered</div>
+              <div className="text-gray-300 font-bold tracking-wider uppercase text-xs">Destinations Covered</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Features Section */}
-      <div className="bg-gray-50 dark:bg-gray-900 py-24 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-dark dark:text-white mb-4">Why Choose TravelSaarthi?</h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400">We bring you the best tools and services to make your travel planning effortless and exciting.</p>
-          </FadeUp>
-          
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, idx) => (
-              <StaggerItem key={idx} className="bg-white dark:bg-gray-800 p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group">
-                <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold text-dark dark:text-white mb-3">{feature.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{feature.desc}</p>
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
+      <div className="bg-gray-50 py-24 my-12 rounded-3xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-sm">
+        <FadeUp className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Why Choose TravelSaarthi?</h2>
+          <p className="text-lg text-gray-500 font-medium">We bring you the best tools and services to make your travel planning effortless and exciting.</p>
+        </FadeUp>
+        
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, idx) => (
+            <StaggerItem key={idx} className="bg-white p-8 rounded-3xl shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group">
+              <div className="w-16 h-16 bg-[#FF385C]/10 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 tracking-tight">{feature.title}</h3>
+              <p className="text-gray-600 leading-relaxed text-sm font-medium">{feature.desc}</p>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
 
       {/* Team Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <FadeUp className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-extrabold text-dark dark:text-white mb-4">Meet Our Experts</h2>
-          <p className="text-xl text-gray-500 dark:text-gray-400">The passionate people working behind the scenes to make your dream vacations a reality.</p>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">Meet Our Experts</h2>
+          <p className="text-lg text-gray-500 font-medium">The passionate people working behind the scenes to make your dream vacations a reality.</p>
         </FadeUp>
         
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {team.map((member, idx) => (
             <StaggerItem key={idx} className="group text-center">
-              <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white dark:border-gray-800">
+              <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden shadow-lg border-4 border-white">
                 <img src={member.image} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                <div className="absolute inset-0 bg-primary/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
-                  <a href="#" className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-primary hover:bg-dark hover:text-white transition-colors">in</a>
-                  <a href="#" className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-primary hover:bg-dark hover:text-white transition-colors">tw</a>
-                </div>
               </div>
-              <h3 className="text-xl font-bold text-dark dark:text-white">{member.name}</h3>
-              <p className="text-primary font-medium">{member.role}</p>
+              <h3 className="text-xl font-bold text-gray-900 tracking-tight">{member.name}</h3>
+              <p className="text-[#FF385C] font-semibold text-sm mt-0.5">{member.role}</p>
             </StaggerItem>
           ))}
         </StaggerContainer>
       </div>
 
       {/* Testimonials Section */}
-      <div className="bg-gray-50 dark:bg-gray-900 py-24 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeUp className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-dark dark:text-white mb-4">What Our Travelers Say</h2>
-            <p className="text-xl text-gray-500 dark:text-gray-400">Don't just take our word for it. Here are some stories from our community.</p>
-          </FadeUp>
-          
-          <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial) => (
-              <StaggerItem key={testimonial.id}>
-                <ReviewCard review={testimonial} />
-              </StaggerItem>
-            ))}
-          </StaggerContainer>
-        </div>
+      <div className="bg-gray-50 py-24 my-12 rounded-3xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow-sm">
+        <FadeUp className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 tracking-tight">What Our Travelers Say</h2>
+          <p className="text-lg text-gray-500 font-medium">Don't just take our word for it. Here are some stories from our community.</p>
+        </FadeUp>
+        
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial) => (
+            <StaggerItem key={testimonial.id}>
+              <ReviewCard review={testimonial} />
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
       </div>
 
       {/* CTA Banner */}
