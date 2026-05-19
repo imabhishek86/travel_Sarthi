@@ -15,8 +15,10 @@ return new class extends Migration {
     }
     public function down() {
         Schema::table('reviews', function (Blueprint $table) {
-            $table->dropUnique(['user_id', 'package_id']);
             $table->dropColumn(['title', 'images', 'helpful_count']);
+        });
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->dropUnique(['user_id', 'package_id']);
         });
     }
 };
