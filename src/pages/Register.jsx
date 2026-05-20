@@ -32,7 +32,7 @@ const Register = () => {
         password: formData.password,
         role: formData.role
       });
-      navigate('/dashboard/bookings', { replace: true });
+      navigate('/', { replace: true });
     } catch (error) {
       if (error.response?.data?.errors) {
         const serverErrors = error.response.data.errors;

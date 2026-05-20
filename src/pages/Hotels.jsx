@@ -5,8 +5,10 @@ import SkeletonCard from '../components/SkeletonCard';
 import { hotelService } from '../services/hotel.service';
 import FadeUp from '../components/common/FadeUp';
 import { StaggerContainer, StaggerItem } from '../components/common/StaggerContainer';
+import { useTheme } from '../context/ThemeContext';
 
 const Hotels = () => {
+  const { isDarkMode } = useTheme();
   const [hotels, setHotels] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -96,17 +98,17 @@ const Hotels = () => {
   }, [hotels, searchQuery, filters, sortBy]);
 
   return (
-    <div className="bg-white min-h-screen pb-20 pt-24 transition-colors duration-300">
-      {/* Top Banner - Premium Airbnb White Theme */}
-      <div className="bg-white py-12 px-4 border-b border-gray-100 shadow-sm">
+    <div className={`min-h-screen pb-20 pt-24 transition-colors duration-300 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'}`}>
+      {/* Top Banner */}
+      <div className={`py-12 px-4 border-b shadow-sm ${isDarkMode ? 'bg-gray-950 border-gray-800' : 'bg-white border-gray-100'}`}>
         <FadeUp className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 tracking-tight">Find Your Perfect Stay</h1>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8 font-medium">
+          <h1 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Find Your Perfect Stay</h1>
+          <p className={`text-lg max-w-2xl mx-auto mb-8 font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
             Discover luxury resorts, cozy villas, and boutique stays in top destinations around the world.
           </p>
           
           {/* Main Search Bar */}
-          <div className="max-w-3xl mx-auto relative group shadow-xl rounded-full border border-gray-200 bg-white">
+          <div className={`max-w-3xl mx-auto relative group shadow-xl rounded-full border ${isDarkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'}`}>
             <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-[#FF385C]">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -117,7 +119,7 @@ const Hotels = () => {
               placeholder="Search by hotel name, city, or location..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-14 pr-6 py-4 rounded-full border-0 outline-none text-gray-900 bg-transparent text-lg font-medium placeholder-gray-400"
+              className={`w-full pl-14 pr-6 py-4 rounded-full border-0 outline-none bg-transparent text-lg font-medium ${isDarkMode ? 'text-gray-100 placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'}`}
             />
           </div>
         </FadeUp>
@@ -125,10 +127,10 @@ const Hotels = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         {/* Toolbar: Mobile Filter Toggle & Sorting */}
-        <div className="flex flex-col sm:flex-row justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100 mb-8 gap-4">
+        <div className={`flex flex-col sm:flex-row justify-between items-center p-4 rounded-2xl shadow-sm border mb-8 gap-4 ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
           <button 
             onClick={() => setIsMobileFilterOpen(true)}
-            className="lg:hidden flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-900 rounded-xl font-semibold transition-colors"
+            className={`lg:hidden flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold transition-colors ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700 text-gray-200' : 'bg-gray-100 hover:bg-gray-200 text-gray-900'}`}
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
@@ -136,16 +138,16 @@ const Hotels = () => {
             Filters
           </button>
 
-          <div className="text-gray-500 font-medium text-sm sm:text-base">
-            Showing <span className="text-gray-900 font-bold">{filteredAndSortedHotels.length}</span> properties
+          <div className={`text-sm sm:text-base font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+            Showing <span className={`font-bold ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>{filteredAndSortedHotels.length}</span> properties
           </div>
 
           <div className="flex items-center gap-3 w-full sm:w-auto">
-            <span className="text-gray-500 text-sm font-medium whitespace-nowrap">Sort by:</span>
+            <span className={`text-sm font-medium whitespace-nowrap ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Sort by:</span>
             <select 
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="w-full sm:w-auto bg-gray-50 border border-gray-200 text-gray-900 text-sm font-semibold rounded-xl focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] block p-2.5 outline-none cursor-pointer"
+              className={`w-full sm:w-auto border text-sm font-semibold rounded-xl focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] block p-2.5 outline-none cursor-pointer ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-100' : 'bg-gray-50 border-gray-200 text-gray-900'}`}
             >
               <option value="recommended">Recommended</option>
               <option value="priceLow">Price: Low to High</option>
@@ -170,7 +172,7 @@ const Hotels = () => {
                 className="fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity" 
                 onClick={() => setIsMobileFilterOpen(false)}
               ></div>
-              <div className="relative w-4/5 max-w-sm bg-white h-full transform transition-transform ease-in-out duration-300">
+              <div className={`relative w-4/5 max-w-sm h-full transform transition-transform ease-in-out duration-300 ${isDarkMode ? 'bg-gray-950' : 'bg-white'}`}>
                 <HotelFilter 
                   filters={filters} 
                   setFilters={setFilters} 

@@ -85,10 +85,10 @@ class AuthController extends Controller
             try {
                 \Illuminate\Support\Facades\Storage::disk('s3')->put($path, file_get_contents($file), 'public');
                 $url = rtrim(env('AWS_URL'), '/') . '/' . $path;
-            } catch (\Exception $e) {
+            } catch (\Throwable $e) {
                 // Fallback to local public disk if MinIO connection fails
                 $localPath = $file->store('avatars', 'public');
-                $url = asset('storage/' . $localPath);
+                $url = url('storage/' . $localPath);
             }
 
             $user->avatar = $url;

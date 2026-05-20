@@ -26,6 +26,11 @@ class Booking extends Model
         return $this->belongsTo(Coupon::class);
     }
 
+    public function destination()
+    {
+        return $this->belongsTo(Destination::class);
+    }
+
     public function review()
     {
         return $this->hasOne(Review::class);

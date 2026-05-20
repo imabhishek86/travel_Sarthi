@@ -6,8 +6,10 @@ import BookingSidebar from '../components/hotel-details/BookingSidebar';
 import ReviewCard from '../components/hotel-details/ReviewCard';
 import { hotelService } from '../services/hotel.service';
 import HotelCard from '../components/HotelCard';
+import { useTheme } from '../context/ThemeContext';
 
 const HotelDetails = () => {
+  const { isDarkMode } = useTheme();
   const { id } = useParams();
   const [hotel, setHotel] = useState(null);
   const [similarHotels, setSimilarHotels] = useState([]);
@@ -102,20 +104,20 @@ const HotelDetails = () => {
     );
   }
 
-  if (!hotel) return <div className="text-center py-20 mt-20">Hotel not found</div>;
+  if (!hotel) return <div className={`text-center py-20 mt-20 ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>Hotel not found</div>;
 
   return (
-    <div className="bg-gray-50 min-h-screen pb-20">
+    <div className={`min-h-screen pb-20 transition-colors duration-300 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-16">
         
         {/* Breadcrumb & Header */}
         <div className="mb-6">
-          <div className="text-sm text-gray-500 mb-2 flex items-center gap-2 font-medium">
+          <div className={`text-sm mb-2 flex items-center gap-2 font-medium ${isDarkMode ? 'text-gray-450' : 'text-gray-500'}`}>
             <Link to="/" className="hover:text-[#FF385C]">Home</Link>
             <span>›</span>
             <Link to="/hotels" className="hover:text-[#FF385C]">Hotels</Link>
             <span>›</span>
-            <span className="text-gray-900 font-bold">{hotel.location}</span>
+            <span className={`font-bold ${isDarkMode ? 'text-gray-200' : 'text-gray-900'}`}>{hotel.location}</span>
           </div>
 
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
@@ -125,11 +127,11 @@ const HotelDetails = () => {
                   {hotel.type}
                 </span>
                 <div className="flex items-center text-yellow-400">
-                  {"⭐".repeat(Math.floor(hotel.rating))}
+                  {"⭐".repeat(Math.min(5, Math.floor(hotel.rating)))}
                 </div>
               </div>
-              <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900 mb-2 tracking-tight">{hotel.name}</h1>
-              <p className="text-gray-600 flex items-center gap-2 text-base font-medium">
+              <h1 className={`text-2xl md:text-4xl font-extrabold mb-2 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{hotel.name}</h1>
+              <p className={`flex items-center gap-2 text-base font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-[#FF385C]">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -140,7 +142,7 @@ const HotelDetails = () => {
 
             {/* Action Buttons */}
             <div className="flex gap-3">
-              <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 text-gray-700 font-semibold transition-colors shadow-sm text-sm">
+              <button className={`flex items-center gap-2 px-4 py-2 border rounded-xl font-semibold transition-colors shadow-sm text-sm ${isDarkMode ? 'bg-gray-900 border-gray-800 text-gray-250 hover:bg-gray-800' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z" />
                 </svg>
@@ -148,7 +150,7 @@ const HotelDetails = () => {
               </button>
               <button 
                 onClick={() => setIsFavorite(!isFavorite)}
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 text-gray-700 font-semibold transition-colors shadow-sm text-sm"
+                className={`flex items-center gap-2 px-4 py-2 border rounded-xl font-semibold transition-colors shadow-sm text-sm ${isDarkMode ? 'bg-gray-900 border-gray-800 text-gray-250 hover:bg-gray-800' : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'}`}
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill={isFavorite ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2" className={`w-5 h-5 ${isFavorite ? 'text-[#FF385C]' : ''}`}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
@@ -170,9 +172,9 @@ const HotelDetails = () => {
           {/* Left Column: Details */}
           <div className="w-full lg:w-2/3">
             {/* Description */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm mb-8">
-              <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-4 tracking-tight">About the Property</h3>
-              <p className="text-gray-600 leading-relaxed text-base">
+            <div className={`rounded-2xl p-8 border shadow-sm mb-8 ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
+              <h3 className={`text-xl md:text-2xl font-extrabold mb-4 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>About the Property</h3>
+              <p className={`leading-relaxed text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-650'}`}>
                 {hotel.description}
               </p>
             </div>
@@ -183,14 +185,14 @@ const HotelDetails = () => {
             </div>
 
             {/* Nearby Attractions */}
-            <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm mb-8">
-              <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 mb-6 tracking-tight">Explore the Area</h3>
+            <div className={`rounded-2xl p-8 border shadow-sm mb-8 ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
+              <h3 className={`text-xl md:text-2xl font-extrabold mb-6 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Explore the Area</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {hotel.nearbyAttractions.map((place, idx) => (
-                  <div key={idx} className="flex items-center gap-3 bg-gray-50 p-3.5 rounded-xl border border-gray-100 hover:border-[#FF385C]/30 transition-colors">
+                  <div key={idx} className={`flex items-center gap-3 p-3.5 rounded-xl border transition-colors ${isDarkMode ? 'bg-gray-800/40 border-gray-700 hover:border-[#FF385C]/50' : 'bg-gray-50 border-gray-100 hover:border-[#FF385C]/30'}`}>
                     <img src={place.image} alt={place.name} className="w-16 h-16 rounded-lg object-cover shadow-sm" />
                     <div>
-                      <h4 className="font-bold text-gray-900 text-sm">{place.name}</h4>
+                      <h4 className={`font-bold text-sm ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{place.name}</h4>
                       <p className="text-xs text-gray-500 mt-1 font-medium">{place.distance}</p>
                     </div>
                   </div>
@@ -201,9 +203,9 @@ const HotelDetails = () => {
             {/* Reviews */}
             <div className="mb-8">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl md:text-2xl font-extrabold text-gray-900 tracking-tight">Guest Reviews</h3>
+                <h3 className={`text-xl md:text-2xl font-extrabold tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Guest Reviews</h3>
                 <div className="flex items-center gap-2">
-                  <span className="text-xl font-extrabold text-gray-900">{hotel.rating}</span>
+                  <span className={`text-xl font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{hotel.rating}</span>
                   <span className="text-gray-500 font-medium text-sm">({hotel.reviewsCount} reviews)</span>
                 </div>
               </div>
@@ -226,7 +228,7 @@ const HotelDetails = () => {
 
         {/* Similar Hotels */}
         <div className="mt-16">
-          <h2 className="text-2xl md:text-3xl font-extrabold text-gray-900 mb-8 tracking-tight">Similar Properties</h2>
+          <h2 className={`text-2xl md:text-3xl font-extrabold mb-8 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Similar Properties</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Grab first 3 items from general list that aren't this hotel */}
             {similarHotels.map(h => (

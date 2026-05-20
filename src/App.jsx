@@ -18,6 +18,8 @@ import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Help from './pages/Help';
+import AiTripPlanner from './pages/AiTripPlanner';
+import ExploreDestinations from './pages/ExploreDestinations';
 
 // Dashboard Pages
 import DashboardHome from './pages/dashboard/DashboardHome';
@@ -35,6 +37,7 @@ import PackageForm from './pages/admin/PackageForm';
 import ManageBookings from './pages/admin/ManageBookings';
 import ManageCoupons from './pages/admin/ManageCoupons';
 import AdminReviews from './pages/admin/AdminReviews';
+import ManageDestinations from './pages/admin/ManageDestinations';
 
 import { ThemeProvider } from './context/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
@@ -67,6 +70,8 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="help" element={<Help />} />
+          <Route path="trip-planner" element={<AiTripPlanner />} />
+          <Route path="explore" element={<ExploreDestinations />} />
         </Route>
 
         {/* Dashboard Routes with DashboardLayout */}
@@ -75,6 +80,8 @@ function App() {
           <Route path="bookings" element={<MyBookings />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="profile" element={<Profile />} />
+          
+          
         </Route>
 
         {/* Admin Routes with AdminLayout */}
@@ -88,6 +95,7 @@ function App() {
           <Route path="bookings" element={<ManageBookings />} />
           <Route path="coupons" element={<ManageCoupons />} />
           <Route path="reviews" element={<AdminReviews />} />
+          <Route path="destinations" element={<ManageDestinations />} />
         </Route>
       </Routes>
       </Router>

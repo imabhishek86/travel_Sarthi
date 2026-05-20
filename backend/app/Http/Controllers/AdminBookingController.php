@@ -45,7 +45,12 @@ class AdminBookingController extends Controller
                 break;
         }
 
-        return response()->json($query->paginate(20));
+        $bookings = $query->get();
+        
+        return response()->json([
+            'data' => $bookings,
+            'total' => $bookings->count()
+        ]);
     }
 
     public function show($id)

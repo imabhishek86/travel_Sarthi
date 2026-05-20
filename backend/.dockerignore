@@ -1,0 +1,13 @@
+.env
+.git
+.github
+node_modules
+vendor
+tests
+docker-compose.yml
+Dockerfile
+start.sh
+.dockerignore
+composer.lock
+package-lock.json
+bun.lock

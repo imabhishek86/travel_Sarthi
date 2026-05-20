@@ -4,8 +4,10 @@ import PackageCard from '../components/PackageCard';
 import PackageCardSkeleton from '../components/PackageCardSkeleton';
 import EmptyState from '../components/EmptyState';
 import { Search, X, Filter } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const Packages = () => {
+  const { isDarkMode } = useTheme();
   const { data: packages, meta, loading, error, filters, updateFilter, removeFilter, loadMore, fetchPackages } = usePackages();
   const [searchInput, setSearchInput] = useState(filters.search);
   const [destinations, setDestinations] = useState([]);
@@ -26,16 +28,16 @@ const Packages = () => {
   const activeFilterChips = Object.entries(filters).filter(([k, v]) => v !== '' && k !== 'budget_max' && k !== 'search' && k !== 'sort');
 
   return (
-    <div className="bg-white min-h-screen pb-20 pt-24 transition-colors duration-300">
-      {/* Top Banner - Premium Airbnb White Theme */}
-      <div className="bg-white py-12 px-4 border-b border-gray-100 shadow-sm">
+    <div className={`min-h-screen pb-20 pt-24 transition-colors duration-300 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-white text-gray-900'}`}>
+      {/* Top Banner */}
+      <div className={`py-12 px-4 border-b shadow-sm ${isDarkMode ? 'bg-gray-950 border-gray-800' : 'bg-white border-gray-100'}`}>
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900 tracking-tight">Explore Unique Packages & Tours</h1>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto mb-8 font-medium">
+          <h1 className={`text-4xl md:text-5xl font-extrabold mb-4 tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Explore Unique Packages & Tours</h1>
+          <p className={`text-lg max-w-2xl mx-auto mb-8 font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
             Immersive guided trips, local adventures, and unforgettable worldwide experiences.
           </p>
           
-          <div className="max-w-3xl mx-auto relative group shadow-xl rounded-full border border-gray-200 bg-white">
+          <div className={`max-w-3xl mx-auto relative group shadow-xl rounded-full border ${isDarkMode ? 'border-gray-800 bg-gray-900' : 'border-gray-200 bg-white'}`}>
             <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-[#FF385C]">
               <Search size={22} strokeWidth={2.5} />
             </div>
@@ -44,7 +46,7 @@ const Packages = () => {
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
               placeholder="Search by destination, title, or keywords..."
-              className="w-full pl-14 pr-6 py-4 rounded-full border-0 outline-none text-gray-900 bg-transparent text-lg font-medium placeholder-gray-400"
+              className={`w-full pl-14 pr-6 py-4 rounded-full border-0 outline-none bg-transparent text-lg font-medium ${isDarkMode ? 'text-gray-100 placeholder-gray-500' : 'text-gray-900 placeholder-gray-400'}`}
             />
           </div>
         </div>
@@ -52,11 +54,11 @@ const Packages = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row gap-8">
         <div className="w-full md:w-1/4">
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 sticky top-28">
-            <h2 className="text-xl font-bold mb-6 text-gray-900 flex items-center gap-2"><Filter size={20} className="text-[#FF385C]"/> Filters</h2>
+          <div className={`p-6 rounded-3xl shadow-sm border sticky top-28 ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
+            <h2 className={`text-xl font-bold mb-6 flex items-center gap-2 ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}><Filter size={20} className="text-[#FF385C]"/> Filters</h2>
             
             <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-900 mb-2">Max Budget (₹{Number(filters.budget_max).toLocaleString('en-IN')})</label>
+              <label className={`block text-sm font-bold mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>Max Budget (₹{Number(filters.budget_max).toLocaleString('en-IN')})</label>
               <input
                 type="range"
                 min="1000"
@@ -69,11 +71,11 @@ const Packages = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-900 mb-2">Destination</label>
+              <label className={`block text-sm font-bold mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>Destination</label>
               <select 
                 value={filters.destination} 
                 onChange={(e) => updateFilter('destination', e.target.value)} 
-                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl font-medium focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition"
+                className={`w-full p-3 border rounded-xl font-semibold focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-100' : 'bg-gray-50 border-gray-200 text-gray-900'}`}
               >
                 <option value="">Any Destination</option>
                 {destinations.map(d => <option key={d} value={d}>{d}</option>)}
@@ -81,7 +83,7 @@ const Packages = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-900 mb-3">Duration</label>
+              <label className={`block text-sm font-bold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>Duration</label>
               <div className="flex flex-col gap-3">
                 {[
                   { label: 'Any Duration', val: '' },
@@ -97,14 +99,14 @@ const Packages = () => {
                       onChange={() => updateFilter('duration', opt.val)}
                       className="text-[#FF385C] focus:ring-[#FF385C] w-4 h-4 cursor-pointer"
                     />
-                    <span className="text-gray-700 group-hover:text-gray-900 font-medium text-sm transition-colors">{opt.label}</span>
+                    <span className={`font-semibold text-sm transition-colors ${isDarkMode ? 'text-gray-400 group-hover:text-white' : 'text-gray-700 group-hover:text-gray-900'}`}>{opt.label}</span>
                   </label>
                 ))}
               </div>
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-900 mb-3">Type</label>
+              <label className={`block text-sm font-bold mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>Type</label>
               <div className="flex flex-col gap-3">
                 {['Adventure', 'Leisure', 'Pilgrimage', 'Honeymoon', 'Family'].map(type => (
                   <label key={type} className="flex items-center gap-3 cursor-pointer group">
@@ -114,18 +116,18 @@ const Packages = () => {
                       onChange={() => updateFilter('type', filters.type === type ? '' : type)}
                       className="rounded text-[#FF385C] focus:ring-[#FF385C] w-4 h-4 cursor-pointer"
                     />
-                    <span className="text-gray-700 group-hover:text-gray-900 font-medium text-sm transition-colors">{type}</span>
+                    <span className={`font-semibold text-sm transition-colors ${isDarkMode ? 'text-gray-400 group-hover:text-white' : 'text-gray-700 group-hover:text-gray-900'}`}>{type}</span>
                   </label>
                 ))}
               </div>
             </div>
             
             <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-900 mb-2">Sort By</label>
+              <label className={`block text-sm font-bold mb-2 ${isDarkMode ? 'text-gray-300' : 'text-gray-900'}`}>Sort By</label>
               <select 
                 value={filters.sort} 
                 onChange={(e) => updateFilter('sort', e.target.value)} 
-                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl font-medium focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition"
+                className={`w-full p-3 border rounded-xl font-semibold focus:ring-2 focus:ring-[#FF385C]/20 focus:border-[#FF385C] outline-none transition ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-100' : 'bg-gray-50 border-gray-200 text-gray-900'}`}
               >
                 <option value="">Newest</option>
                 <option value="price_asc">Price: Low to High</option>

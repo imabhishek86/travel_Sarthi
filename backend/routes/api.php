@@ -11,6 +11,9 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\TravellerController;
 use App\Http\Controllers\AdminAnalyticsController;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\AiTripPlannerController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,13 @@ Route::get('/hotels/{id}', [HotelController::class, 'show']);
 Route::get('/packages', [PackageController::class, 'index']);
 Route::get('/packages/{id}', [PackageController::class, 'show']);
 Route::get('/packages/{id}/reviews', [ReviewController::class, 'packageReviews']);
+
+// Public Destination routes
+Route::get('/destinations', [DestinationController::class, 'index']);
+Route::get('/destinations/{id}', [DestinationController::class, 'show']);
+
+// Razorpay config (public)
+Route::get('/payment/config', [PaymentController::class, 'config']);
 
 // Protected Routes
 Route::middleware('auth:sanctum')->group(function () {
@@ -47,6 +57,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/packages', [PackageController::class, 'store']);
     Route::put('/packages/{id}', [PackageController::class, 'update']);
     Route::delete('/packages/{id}', [PackageController::class, 'destroy']);
+
+    // Admin Destination Management
+    Route::post('/admin/destinations', [DestinationController::class, 'store']);
+    Route::put('/admin/destinations/{id}', [DestinationController::class, 'update']);
+    Route::delete('/admin/destinations/{id}', [DestinationController::class, 'destroy']);
+
+    // AI Trip Planner
+    Route::post('/ai/trip-plan', [AiTripPlannerController::class, 'generate']);
+
+    // Razorpay Payments
+    Route::post('/payment/create-order', [PaymentController::class, 'createOrder']);
+    Route::post('/payment/verify', [PaymentController::class, 'verifyPayment']);
 
     // Bookings
     Route::get('/bookings', [BookingController::class, 'index']);
@@ -101,3 +123,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/admin/reviews', [App\Http\Controllers\AdminReviewController::class, 'index']);
     Route::post('/admin/reviews/{id}/reply', [App\Http\Controllers\AdminReviewController::class, 'reply']);
 });
+
+
+
+
