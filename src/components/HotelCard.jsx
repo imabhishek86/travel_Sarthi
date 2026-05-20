@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 
 const HotelCard = ({ hotel }) => {
   const [isFavorite, setIsFavorite] = useState(hotel.isFavorite);
+  const { isDarkMode } = useTheme();
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full">
+    <div className={`rounded-2xl border shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
       {/* Image Container */}
-      <div className="h-64 overflow-hidden relative bg-gray-100">
+      <div className={`h-64 overflow-hidden relative ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
         {/* Rating Badge */}
-        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-sm font-bold flex items-center gap-1 z-10 text-gray-900 shadow-sm">
+        <div className={`absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-lg text-sm font-bold flex items-center gap-1 z-10 text-gray-900 shadow-sm`}>
           ⭐ {hotel.rating}
         </div>
         
@@ -49,11 +51,11 @@ const HotelCard = ({ hotel }) => {
           </div>
         </div>
         
-        <Link to={`/hotels/${hotel.id}`} className="text-xl font-bold text-gray-900 mb-1.5 line-clamp-1 hover:text-[#FF385C] transition-colors">
+        <Link to={`/hotels/${hotel.id}`} className={`text-xl font-bold mb-1.5 line-clamp-1 hover:text-[#FF385C] transition-colors ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>
           {hotel.name}
         </Link>
         
-        <p className="text-sm text-gray-500 mb-4 flex items-center gap-1.5 font-medium">
+        <p className={`text-sm mb-4 flex items-center gap-1.5 font-medium ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 text-gray-400">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -64,22 +66,22 @@ const HotelCard = ({ hotel }) => {
         {/* Amenities */}
         <div className="flex flex-wrap gap-2 mb-6">
           {hotel.amenities.slice(0, 3).map((amenity, index) => (
-            <span key={index} className="text-xs text-gray-700 font-medium bg-gray-50 px-3 py-1 rounded-full border border-gray-200">
+            <span key={index} className={`text-xs font-semibold px-3 py-1 rounded-full border ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-300' : 'bg-gray-50 border-gray-200 text-gray-700'}`}>
               {amenity}
             </span>
           ))}
           {hotel.amenities.length > 3 && (
-            <span className="text-xs text-gray-500 font-medium bg-gray-50 px-2.5 py-1 rounded-full border border-gray-100">
+            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full border ${isDarkMode ? 'bg-gray-800 border-gray-700 text-gray-400' : 'bg-gray-50 border-gray-100 text-gray-500'}`}>
               +{hotel.amenities.length - 3}
             </span>
           )}
         </div>
         
         {/* Footer/Price */}
-        <div className="mt-auto border-t border-gray-100 pt-5 flex justify-between items-end">
+        <div className={`mt-auto border-t pt-5 flex justify-between items-end ${isDarkMode ? 'border-gray-800' : 'border-gray-100'}`}>
           <div>
             <span className="text-xs text-gray-500 font-medium block mb-0.5">Starting from</span>
-            <div className="font-black text-2xl text-gray-900">
+            <div className={`font-black text-2xl ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>
               ${hotel.price}
               <span className="text-sm text-gray-500 font-normal">/night</span>
             </div>

@@ -7,8 +7,10 @@ import ItineraryMap from '../components/ItineraryMap';
 import PackageCard from '../components/PackageCard';
 import { useToast } from '../context/ToastContext';
 import { MapPin, Clock, Calendar, Check, X, Share2, Info, User } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
 
 const PackageDetail = () => {
+  const { isDarkMode } = useTheme();
   const { id } = useParams();
   const navigate = useNavigate();
   const { showToast } = useToast();
@@ -114,8 +116,8 @@ const PackageDetail = () => {
   const availableDates = typeof pkg.available_dates === 'string' ? JSON.parse(pkg.available_dates) : (pkg.available_dates || []);
 
   return (
-    <div className="bg-gray-50 pb-12">
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+    <div className={`min-h-screen pb-12 transition-colors duration-300 ${isDarkMode ? 'bg-gray-950 text-white' : 'bg-gray-50 text-gray-900'}`}>
+      <div className="container mx-auto px-4 py-8 max-w-6xl mt-16">
         
         {/* Header & Gallery */}
         <div className="mb-8">
@@ -123,14 +125,14 @@ const PackageDetail = () => {
             <div>
               <div className="flex gap-2 mb-2">
                 <span className="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">{pkg.type}</span>
-                <span className="bg-gray-200 text-gray-700 text-xs font-bold px-2 py-1 rounded flex items-center gap-1"><MapPin size={12}/> {pkg.destination}</span>
+                <span className={`text-xs font-bold px-2 py-1 rounded flex items-center gap-1 ${isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-200 text-gray-700'}`}><MapPin size={12}/> {pkg.destination}</span>
               </div>
-              <h1 className="text-3xl md:text-4xl font-extrabold text-gray-900">{pkg.title}</h1>
-              <div className="flex items-center gap-4 mt-3 text-sm text-gray-600">
+              <h1 className={`text-3xl md:text-4xl font-extrabold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{pkg.title}</h1>
+              <div className="flex items-center gap-4 mt-3 text-sm">
                 <div className="flex items-center gap-1">
                   <StarRating rating={pkg.reviews_avg_rating || 0} size={16} />
-                  <span className="font-bold text-gray-900">{Number(pkg.reviews_avg_rating || 0).toFixed(1)}</span>
-                  <span>({pkg.reviews_count || 0} reviews)</span>
+                  <span className={`font-bold ${isDarkMode ? 'text-gray-100' : 'text-gray-900'}`}>{Number(pkg.reviews_avg_rating || 0).toFixed(1)}</span>
+                  <span className="text-gray-500">({pkg.reviews_count || 0} reviews)</span>
                 </div>
               </div>
             </div>
@@ -144,12 +146,12 @@ const PackageDetail = () => {
           <div className="w-full lg:w-2/3">
             
             {/* Tabs */}
-            <div className="flex border-b border-gray-200 mb-8 overflow-x-auto scrollbar-hide">
+            <div className={`flex border-b mb-8 overflow-x-auto scrollbar-hide ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
               {tabs.map(tab => (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors ${activeTab === tab.id ? 'border-blue-600 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-300'}`}
+                  className={`px-6 py-4 text-sm font-bold whitespace-nowrap border-b-2 transition-colors ${activeTab === tab.id ? 'border-blue-600 text-blue-600' : isDarkMode ? 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-700' : 'border-transparent text-gray-500 hover:text-gray-800 hover:border-gray-300'}`}
                 >
                   {tab.label}
                 </button>
@@ -162,26 +164,26 @@ const PackageDetail = () => {
               {/* OVERVIEW TAB */}
               {activeTab === 'overview' && (
                 <div className="animate-fade-in-up">
-                  <h2 className="text-2xl font-bold mb-4 text-gray-900">About this package</h2>
-                  <p className="text-gray-600 leading-relaxed mb-8 whitespace-pre-line text-lg">{pkg.description}</p>
+                  <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>About this package</h2>
+                  <p className={`leading-relaxed mb-8 whitespace-pre-line text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{pkg.description}</p>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div className={`grid grid-cols-1 md:grid-cols-2 gap-8 p-6 rounded-2xl shadow-sm border ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
                     <div>
-                      <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><Check className="text-green-500"/> What's Included</h3>
+                      <h3 className={`font-bold text-lg mb-4 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}><Check className="text-green-500"/> What's Included</h3>
                       {included.length > 0 ? (
                         <ul className="space-y-3">
                           {included.map((item, i) => (
-                            <li key={i} className="flex gap-3 text-gray-600"><Check size={20} className="text-green-500 flex-shrink-0"/> {item}</li>
+                            <li key={i} className={`flex gap-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-650'}`}><Check size={20} className="text-green-500 flex-shrink-0"/> {item}</li>
                           ))}
                         </ul>
                       ) : <p className="text-gray-500 italic">Not specified</p>}
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-4 flex items-center gap-2"><X className="text-red-500"/> What's Excluded</h3>
+                      <h3 className={`font-bold text-lg mb-4 flex items-center gap-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}><X className="text-red-500"/> What's Excluded</h3>
                       {excluded.length > 0 ? (
                         <ul className="space-y-3">
                           {excluded.map((item, i) => (
-                            <li key={i} className="flex gap-3 text-gray-600"><X size={20} className="text-red-500 flex-shrink-0"/> {item}</li>
+                            <li key={i} className={`flex gap-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-650'}`}><X size={20} className="text-red-500 flex-shrink-0"/> {item}</li>
                           ))}
                         </ul>
                       ) : <p className="text-gray-500 italic">Not specified</p>}
@@ -194,7 +196,7 @@ const PackageDetail = () => {
               {activeTab === 'itinerary' && (
                 <div className="animate-fade-in-up">
                   <div className="flex justify-between items-end mb-6">
-                    <h2 className="text-2xl font-bold text-gray-900">Itinerary Timeline</h2>
+                    <h2 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Itinerary Timeline</h2>
                     <span className="text-blue-600 font-medium bg-blue-50 px-3 py-1 rounded-full text-sm">{pkg.duration} Days</span>
                   </div>
 
@@ -208,22 +210,22 @@ const PackageDetail = () => {
                               {day.day}
                             </div>
                             
-                            <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-5 rounded-2xl shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-all" onClick={() => toggleDay(day.day)}>
+                            <div className={`w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-5 rounded-2xl shadow-sm border cursor-pointer hover:shadow-md transition-all ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`} onClick={() => toggleDay(day.day)}>
                               <div className="flex justify-between items-center mb-1">
-                                <h3 className="font-bold text-lg text-gray-900">{day.title}</h3>
+                                <h3 className={`font-bold text-lg ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{day.title}</h3>
                                 <span className="text-xl text-gray-400">{isExpanded ? '−' : '+'}</span>
                               </div>
                               <p className="text-sm font-medium text-blue-600 mb-2"><MapPin size={14} className="inline mr-1"/>{day.location_name}</p>
                               
                               {isExpanded && (
-                                <div className="mt-4 pt-4 border-t border-gray-100 animate-fade-in-up">
-                                  <p className="text-gray-600 mb-4 text-sm">{day.description}</p>
+                                <div className={`mt-4 pt-4 border-t animate-fade-in-up ${isDarkMode ? 'border-gray-800' : 'border-gray-100'}`}>
+                                  <p className={`mb-4 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{day.description}</p>
                                   {day.activities && day.activities.length > 0 && (
                                     <div>
                                       <h4 className="text-xs font-bold text-gray-500 uppercase mb-2 tracking-wider">Activities</h4>
                                       <ul className="space-y-2">
                                         {day.activities.map((act, i) => (
-                                          <li key={i} className="flex gap-2 text-sm text-gray-700 bg-gray-50 p-2 rounded-lg"><Check size={16} className="text-green-500 shrink-0 mt-0.5"/> {act}</li>
+                                          <li key={i} className={`flex gap-2 text-sm p-2 rounded-lg ${isDarkMode ? 'text-gray-300 bg-gray-800' : 'text-gray-700 bg-gray-50'}`}><Check size={16} className="text-green-500 shrink-0 mt-0.5"/> {act}</li>
                                         ))}
                                       </ul>
                                     </div>
@@ -236,8 +238,8 @@ const PackageDetail = () => {
                       })}
                     </div>
                   ) : (
-                    <div className="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
-                      <p className="text-gray-500">Detailed itinerary is not available for this package yet.</p>
+                    <div className={`text-center py-12 rounded-2xl border border-dashed ${isDarkMode ? 'bg-gray-900 border-gray-850' : 'bg-gray-50 border-gray-200'}`}>
+                      <p className="text-gray-505 font-medium">Detailed itinerary is not available for this package yet.</p>
                     </div>
                   )}
 
@@ -249,7 +251,7 @@ const PackageDetail = () => {
               {activeTab === 'hotel' && (
                 <div className="animate-fade-in-up">
                   {pkg.hotel ? (
-                    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                    <div className={`rounded-2xl shadow-sm border overflow-hidden ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
                       <div className="h-64 bg-gray-200 relative">
                         {pkg.hotel.image ? (
                           <img src={pkg.hotel.image} alt={pkg.hotel.name} className="w-full h-full object-cover" />
@@ -261,26 +263,26 @@ const PackageDetail = () => {
                         </div>
                       </div>
                       <div className="p-8">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-2">{pkg.hotel.name}</h2>
+                        <h2 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{pkg.hotel.name}</h2>
                         <p className="text-gray-600 flex items-center gap-2 mb-6"><MapPin size={18} className="text-blue-500"/> {pkg.hotel.location}</p>
                         
-                        <h3 className="font-bold text-gray-800 mb-3 text-lg">Amenities</h3>
+                        <h3 className={`font-bold mb-3 text-lg ${isDarkMode ? 'text-gray-200' : 'text-gray-800'}`}>Amenities</h3>
                         <div className="flex flex-wrap gap-3">
                           {pkg.hotel.amenities ? (
                             JSON.parse(pkg.hotel.amenities).map((amenity, i) => (
-                              <span key={i} className="bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 border border-blue-100">
+                              <span key={i} className={`px-4 py-2 rounded-lg text-sm font-medium flex items-center gap-2 border ${isDarkMode ? 'bg-gray-850 text-blue-400 border-blue-900/50' : 'bg-blue-50 text-blue-700 border-blue-100'}`}>
                                 <Info size={16} /> {amenity}
                               </span>
                             ))
                           ) : (
-                            <span className="text-gray-500 italic">No amenities listed</span>
+                            <span className="text-gray-505 italic font-medium">No amenities listed</span>
                           )}
                         </div>
                       </div>
                     </div>
                   ) : (
-                    <div className="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
-                      <p className="text-gray-500">Hotel information is not provided for this package.</p>
+                    <div className={`text-center py-12 rounded-2xl border border-dashed ${isDarkMode ? 'bg-gray-900 border-gray-850' : 'bg-gray-50 border-gray-200'}`}>
+                      <p className="text-gray-505 font-medium">Hotel information is not provided for this package.</p>
                     </div>
                   )}
                 </div>
@@ -289,7 +291,7 @@ const PackageDetail = () => {
               {/* REVIEWS TAB */}
               {activeTab === 'reviews' && (
                 <div className="animate-fade-in-up">
-                  <div className="flex items-center gap-6 mb-8 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div className={`flex items-center gap-6 mb-8 p-6 rounded-2xl shadow-sm border ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
                     <div className="text-center p-6 bg-blue-50 rounded-xl border border-blue-100 min-w-[150px]">
                       <div className="text-5xl font-black text-blue-600 mb-2">{Number(pkg.reviews_avg_rating || 0).toFixed(1)}</div>
                       <StarRating rating={pkg.reviews_avg_rating || 0} size={20} />
@@ -304,21 +306,21 @@ const PackageDetail = () => {
                   {reviews.length > 0 ? (
                     <div className="space-y-4">
                       {reviews.map(review => (
-                        <div key={review.id} className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                        <div key={review.id} className={`p-6 rounded-2xl shadow-sm border ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
                           <div className="flex justify-between items-start mb-4">
                             <div className="flex gap-4 items-center">
                               <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center text-gray-500 font-bold text-xl">
                                 {review.user?.name ? review.user.name.charAt(0) : <User/>}
                               </div>
                               <div>
-                                <h4 className="font-bold text-gray-900">{review.user?.name || 'Anonymous'}</h4>
+                                <h4 className={`font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{review.user?.name || 'Anonymous'}</h4>
                                 <p className="text-xs text-gray-500">{new Date(review.created_at).toLocaleDateString()}</p>
                               </div>
                             </div>
                             <StarRating rating={review.rating} size={14} />
                           </div>
-                          <h5 className="font-bold text-gray-800 mb-2">{review.title}</h5>
-                          <p className="text-gray-600 leading-relaxed text-sm md:text-base">{review.comment}</p>
+                          <h5 className={`font-bold mb-2 ${isDarkMode ? 'text-gray-250' : 'text-gray-800'}`}>{review.title}</h5>
+                          <p className={`leading-relaxed text-sm md:text-base ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>{review.comment}</p>
                         </div>
                       ))}
                       
@@ -335,8 +337,8 @@ const PackageDetail = () => {
                       )}
                     </div>
                   ) : (
-                    <div className="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
-                      <p className="text-gray-500">No reviews yet. Be the first to review after booking!</p>
+                    <div className={`text-center py-12 rounded-2xl border border-dashed ${isDarkMode ? 'bg-gray-900 border-gray-850' : 'bg-gray-50 border-gray-200'}`}>
+                      <p className="text-gray-505 font-medium">No reviews yet. Be the first to review after booking!</p>
                     </div>
                   )}
                 </div>
@@ -346,24 +348,24 @@ const PackageDetail = () => {
 
           {/* Right Sidebar (Sticky) */}
           <div className="w-full lg:w-1/3">
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 sticky top-24">
-              <div className="flex justify-between items-start border-b border-gray-100 pb-6 mb-6">
+            <div className={`p-6 rounded-2xl shadow-lg border sticky top-24 ${isDarkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-100'}`}>
+              <div className={`flex justify-between items-start border-b pb-6 mb-6 ${isDarkMode ? 'border-gray-800' : 'border-gray-100'}`}>
                 <div>
                   <p className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-1">Total Price</p>
-                  <p className="text-3xl font-black text-gray-900">₹{Number(pkg.budget).toLocaleString('en-IN')}</p>
+                  <p className={`text-3xl font-black ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>₹{Number(pkg.budget).toLocaleString('en-IN')}</p>
                   <p className="text-xs text-gray-500 mt-1">per person (taxes incl.)</p>
                 </div>
-                <button onClick={handleShare} className="p-3 bg-gray-50 hover:bg-blue-50 text-gray-600 hover:text-blue-600 rounded-full transition-colors group">
+                <button onClick={handleShare} className={`p-3 rounded-full transition-colors group ${isDarkMode ? 'bg-gray-800 hover:bg-blue-900/50 text-gray-300 hover:text-blue-400' : 'bg-gray-50 hover:bg-blue-50 text-gray-600 hover:text-blue-600'}`}>
                   <Share2 size={20} className="group-active:scale-90 transition-transform" />
                 </button>
               </div>
 
               <div className="space-y-4 mb-8">
-                <div className="flex items-center gap-3 text-gray-700 font-medium bg-gray-50 p-3 rounded-lg">
+                <div className={`flex items-center gap-3 font-semibold p-3 rounded-lg ${isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-50 text-gray-700'}`}>
                   <Clock className="text-blue-500" size={20} /> {pkg.duration} Days / {pkg.duration - 1} Nights
                 </div>
                 {availableDates.length > 0 && (
-                  <div className="flex items-center gap-3 text-gray-700 font-medium bg-gray-50 p-3 rounded-lg">
+                  <div className={`flex items-center gap-3 font-semibold p-3 rounded-lg ${isDarkMode ? 'bg-gray-800 text-gray-300' : 'bg-gray-50 text-gray-700'}`}>
                     <Calendar className="text-blue-500" size={20} /> Next Dep: {new Date(availableDates[0]).toLocaleDateString()}
                   </div>
                 )}
@@ -385,8 +387,8 @@ const PackageDetail = () => {
 
         {/* Related Packages */}
         {relatedPackages.length > 0 && (
-          <div className="mt-16 pt-8 border-t border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Similar Packages You Might Like</h2>
+          <div className={`mt-16 pt-8 border-t ${isDarkMode ? 'border-gray-800' : 'border-gray-200'}`}>
+            <h2 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Similar Packages You Might Like</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {relatedPackages.map(rel => <PackageCard key={rel.id} pkg={rel} />)}
             </div>
