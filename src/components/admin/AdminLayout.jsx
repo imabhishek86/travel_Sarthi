@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { 
   LayoutDashboard, Package, CalendarDays, Building2, 
-  Users, Tags, MessageSquare, Menu, LogOut, X, Bell 
+  Users, Tags, MessageSquare, Menu, LogOut, X, Bell, Compass 
 } from 'lucide-react';
 import api from '../../services/api';
 import { useAuth } from '../../context/AuthContext';
@@ -17,6 +17,7 @@ const AdminLayout = () => {
     { name: 'Bookings', icon: CalendarDays, path: '/admin/bookings' },
     { name: 'Packages', icon: Package, path: '/admin/packages' },
     { name: 'Hotels', icon: Building2, path: '/admin/hotels' },
+    { name: 'Destinations', icon: Compass, path: '/admin/destinations' },
     { name: 'Users', icon: Users, path: '/admin/users' },
     { name: 'Coupons', icon: Tags, path: '/admin/coupons' },
     { name: 'Reviews', icon: MessageSquare, path: '/admin/reviews' },

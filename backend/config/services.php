@@ -35,4 +35,13 @@ return [
         ],
     ],
 
+    'razorpay' => [
+        'key' => env('RAZORPAY_ID'),
+        'secret' => env('RAZORPAY_SECRET'),
+    ],
+
+    'groq' => [
+        'key' => env('GROQ_SECRET'),
+    ],
+
 ];

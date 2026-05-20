@@ -18,4 +18,11 @@ export const adminService = {
   
   getReviews: () => api.get('/admin/reviews'),
   replyToReview: (id, data) => api.post(`/admin/reviews/${id}/reply`, data),
+
+  // Destinations
+  getDestinations: (params) => api.get('/destinations', { params }),
+  createDestination: (data) => api.post('/admin/destinations', data),
+  updateDestination: (id, data) => api.put(`/admin/destinations/${id}`, data),
+  deleteDestination: (id) => api.delete(`/admin/destinations/${id}`),
 };
+

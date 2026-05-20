@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
             TravellerSeeder::class,
             FavouriteSeeder::class,
             AdminAnalyticsSeeder::class,
+            DestinationSeeder::class,
         ]);
     }
 }

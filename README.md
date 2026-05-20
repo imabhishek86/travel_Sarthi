@@ -59,7 +59,7 @@
 ## 🚀 Quick Start & Installation
 
 ### 1. Prerequisites
-- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [Bun](https://bun.sh/) (Recommended) or [Node.js](https://nodejs.org/) (v18+)
 - [PHP](https://www.php.net/) (v8.2+)
 - [Composer](https://getcomposer.org/)
 - [Docker & Docker Compose](https://www.docker.com/)
@@ -87,8 +87,8 @@ php artisan serve
 ### 4. Frontend Setup
 Open a new terminal, install frontend dependencies from the root, and start Vite:
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 > The React frontend will be live at `http://localhost:5173`.
 

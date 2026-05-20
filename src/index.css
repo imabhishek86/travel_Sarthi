@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @theme {
   --color-primary: #FF385C;
   --color-primary-hover: #D70466;
@@ -20,6 +19,7 @@
   }
 }
 
+/* Light mode defaults */
 body {
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -27,8 +27,58 @@ body {
   @apply bg-white text-gray-900 transition-colors duration-300;
 }
 
+/* Dark mode overrides */
+html.dark body {
+  @apply bg-gray-950 text-gray-100;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+/* Dark mode utility classes */
+html.dark .dark\:glass-effect {
+  @apply bg-gray-900/70 backdrop-blur-md border border-gray-700/40;
+}
+
 @layer utilities {
   .glass-effect {
     @apply bg-white/70 backdrop-blur-md border border-white/20;
   }
+}
+
+/* Custom scrollbar for dark mode */
+html.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+html.dark ::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #4a4a6a;
+  border-radius: 4px;
+}
+
+/* Razorpay overlay fix */
+.razorpay-backdrop {
+  @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-[999] flex items-center justify-center;
+}
+
+/* AI Trip Planner animations */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.ai-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,56,92,0.08), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(255,56,92,0.3); }
+  50% { box-shadow: 0 0 20px rgba(255,56,92,0.6); }
+}
+.ai-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
 }
